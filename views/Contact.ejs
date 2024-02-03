@@ -1,0 +1,61 @@
+
+<head>
+
+   
+</head>
+<body class=" ">
+<%- include('./common/header.ejs') %>
+<div class="container-fluid bgshadow py-3 my-4 animation_in">
+<div class="container my-5 bgshadow py-5 contact animation_in">
+<div class="col-12 text-center  text-light animation_in">
+    <div class="display-5 py-1 animation_in">GET IN TOUCH</div>
+    <h4 class="animation_in">You can chat with us on our <a href="https://www.instagram.com/ajit.none/" class="text-decoration-none text-light">Instagram Page ⬈</a> by direct messaging us between 10:30 am - 6:30 pm (Mon - Sat)</h4><br>
+    <h4 class="animation_in">Call us:<a href="https://www.instagram.com/ajit.none/" class="text-decoration-none text-light">+91 54542182154 ⬈</a> between 10:30 am - 6:30 pm (Mon - Sat) </h4>
+    <h4 class="animation_in">E-mail ID:<a href="mailto:ajlazer002@gmail.com" class="text-decoration-none text-light"> ajlazer002@gmail.com ⬈</a> </h4>
+
+</div>
+
+
+
+<!-- form -->
+ 
+
+<div class="container my-5 animation_in">
+<div class="row justify-content-center">
+    <div class="col-5 form py-4 text-light">
+<div class=" px-1 animation_in">
+    <label for="">Name</label> <br>
+    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out  bgshadow">
+</div>
+<div class=" px-1 animation_in">
+    <label for="">Email</label> <br>
+    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow">
+</div>
+<div class=" px-1 animation_in">
+    <label for="">Order Id</label> <br>
+    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow">
+</div>
+<div class=" px-1 my-3 animation_in">
+    <label for="">Message</label> <br>
+    <textarea class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" rows="4"></textarea>
+</div>
+<div class=" px-1 my-3 text-center animation_in">
+    <button class="btn btn-outline-light  w-25 rounded-2  bgshadow">Send</button> <br>
+</div>
+</div>
+</div>
+</div></div></div>
+<%- include('./common/footer.ejs') %>
+</body>
+<script>
+    ScrollReveal({ reset: false,
+    distance:"60px",
+    duration:2500,
+    delay:400});
+    
+    ScrollReveal().reveal('.animation_in', { delay: 500,origin:'top',interval:200 });
+    ScrollReveal().reveal('.animation_out', { delay: 500,origin:'bottom',interval:200 });
+    ScrollReveal().reveal('.animation_left', { delay: 500,origin:'left',interval:200 });
+    ScrollReveal().reveal('.animation_right', { delay: 500,origin:'right',interval:200 });
+    
+    </script>

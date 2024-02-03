@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOME</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="/images/logo.gif">
+  <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
+
+</head>
+
+<body>
+  <div class="container-fluid p-0 sticky-top">
+
+    <div>
+
+      <div class="container-fluid d-flex justify-content-center bg-black m-0 p-0">
+
+        <ul class="nevs d-flex w-100 text-center justify-content-center p-0">
+          <li>
+            <button class="border-0 bg-transparent pt-3 ps-2" type="button" data-bs-toggle="offcanvas"
+              data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><img src="/images/search.png" alt="cart"
+                width="35"></button>
+            <div class="offcanvas offcanvas-top  search" tabindex="-1" id="offcanvasTop"
+              aria-labelledby="offcanvasTopLabel">
+              <div class="offcanvas-header ">
+                <button type="button" class="btn-close text-light" data-bs-dismiss="offcanvas"
+                  aria-label="Close"></button>
+              </div>
+              <div class="offcanvas-body text-center display-5">
+                <img src="/images/search.png" width="35" alt="">
+                <input type="search" class=" rounded-2 text-light py-3 w-50 bg-transparent  " class="btn-close"
+                  data-bs-dismiss="collapse" aria-label="Close" placeholder="exp.Hoodie">
+              </div>
+            </div>
+          </li>
+          <li class="mx-auto logo"> <a class=" " href="/"><img src="/images/logo.gif" alt="" class="py-0"
+                width=""></a></li>
+        </ul>
+        <ul class="ms-auto nevs d-flex pt-3 px-3 carty">
+          <li class=" ms-auto"><a class=" me-3 pt-3" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></li>
+
+          <li class="ms-auto "><a class=" " href="/signin">
+              <img src="/images/acc.png" alt="cart" width="40"> </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div>
+
+      <!-- nav -->
+
+      <nav class="navbar navbar-expand-md navbar-dark bg-black bgshadow">
+        <div class="container px-5">
+
+
+          <button class="navbar-toggler mx-auto border-0 pe-5 out" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="arrow">⟱ </span>
+          </button>
+          <div class="collapse  navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center ">
+
+              <li class="nav-item mx-3 ">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/Sneakers">Sneakers</a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/T-shirts">T-shirts</a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/Joggers">Joggers</a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/Hoodie">Hoodie</a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/Jewellery">Jewellery</a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/Contact">Contact </a>
+              </li>
+              <li class="nav-item mx-3 ">
+                <a class="nav-link" href="/About">About</a>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </div>
+
+
+
+  </div>
+
+<!-- cart -->
+
+
+  <button class="btn btn-transparent bg-black px-3 carts" data-bs-toggle="offcanvas"
+  data-bs-target="#offcanvasScrolling"><img src="/images/cart.png" alt=""></button>
+<div class="offcanvas offcanvas-end bg-black" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+  id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header border-bottom border-2 ">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel"><img src="image/cart.png" alt="" class="pb-2"><span
+        class="text-light fw-bold h4 px-5">YOUR CART</span></h5>
+    <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"><img
+        src="product/close.png" alt="">X</button>
+  </div>
+  <div class="offcanvas-body text-light ">
+    <div class="py-3 border-bottom"><span class="ps-2"> Joggers</span></span> <br>
+      <p class="ps-5 ms-5 text-warning"> ₹12,910
+      </p>
+    </div>
+
+    <div class="py-3 border-bottom ">
+      <span><img src="product/cart2.png" alt="" class=""><span class="ps-2"> T-shirts</span></span> <br>
+      <p class="ps-5 ms-5 text-warning">₹12,210
+      </p>
+    </div>
+
+    <div class="py-3">
+      <span><img src="product/cart3.png" alt="" class=""><span class="ps-2"> Sneakers</span></span> <br>
+      <p class="ps-5 ms-5 text-warning"> ₹66,540
+      </p>
+    </div>
+
+    <div class=" pt-3 border-top border-2 ">
+
+
+      <div class="mt-4 pt-4">
+        <table class="table text-light ">
+          <tbody>
+            <tr>
+              <th scope="row">Subtotal </th>
+              <td>₹68,000 </td>
+
+            </tr>
+            <tr>
+              <th scope="row">Shipping</th>
+              <td>₹650 </td>
+
+            </tr>
+            <tr>
+              <th scope="row">Tax </th>
+              <td>₹12,100 </td>
+
+            </tr>
+            <tr>
+              <th scope="row">Grand Total</th>
+              <td>₹91,680 </td>
+
+            </tr>
+            <tr>
+              <label class="x mb-2 ">
+                <input type="text" name="" placeholder="Enter A Coupon Code" class="bg-dark rounded-2 out text-light">
+                <button class="btn btn-transparent p-1 ">Apply</button>
+              </label>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="x text-light">
+        <button class="btn btn-outline-light ">Continue Shoping</button>
+        <button class="btn btn-outline-light px-3 ms-2 ">Checkout</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+
+</html>

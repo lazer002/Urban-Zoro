@@ -1,0 +1,68 @@
+<head>
+
+
+</head>
+<body class=" bgg">
+    <%- include('./header.ejs') %>
+   <div class="container mt-5 p-3 border rounded-2 ">
+    <div class="row">
+<div class="col-3">
+    <%- include('./left.ejs') %>
+
+
+</div>
+<div class="col-9 text-light">
+
+    <div class="p-3 border rounded-2">
+
+
+<% if(pdata.length>0) { %>
+      <table class="table text-light">
+ 
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col">Picture</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">discount</th>
+            <th scope="col">Price</th>
+            <th scope="col">Colors</th>
+          </tr>
+
+        <% for( var a=0;a<pdata.length;a++) { %>
+   
+
+          <tr>
+            <td scope="row">T-shirt</td>
+            <td><%= pdata[a].pfile %></td>
+            <td> <%= pdata[a].pname %> </td>
+            <td> <%= pdata[a].pdiscription %></td>
+            <td>Rs. <%= pdata[a].pdiscount %></td>
+            <td> <%= pdata[a].pprice %> </td>
+            <td>5</td>
+
+<td>
+<a href="/pshow/<%= pdata[a]._id %>">show</a>
+<a href="/pedit/<%= pdata[a]._id %>">edit</a>
+<a href="/pdelete/<%= pdata[a]._id %>">delete</a>
+
+</td>
+
+          </tr>
+    <% } %>     
+ 
+      </table>
+<% } else { %>
+  no records
+<% } %>
+
+
+
+  </div>
+
+
+
+    </div>
+   </div></div>
+
+</body>

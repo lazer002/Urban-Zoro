@@ -1,0 +1,57 @@
+<head>
+
+
+</head>
+<body class=" bgg">
+    <%- include('./header.ejs') %>
+   <div class="container mt-5 p-3 border rounded-2 ">
+    <div class="row">
+<div class="col-3">
+    <%- include('./left.ejs') %>
+
+
+</div>
+<div class="col-9 text-light">
+
+    <div class="p-3 border rounded-2">
+
+
+<% if(data.length>0) { %>
+      <table class="table text-light">
+        <tr>
+<th >S.No</th>
+<th >Username</th>
+<th >Password</th>
+<th >Email</th>
+<th >Phone Number</th>
+<th >Action</th>
+
+
+        </tr>
+          <% for(var i=0; i<data.length; i++) { %>
+          <tr>
+            <td><%= i+1 %><S.NO</td>
+            <td><%= data[i].uname %></td>
+            <td><%= data[i].password %></td>
+            <td><%= data[i].email %></td>
+            <td><%= data[i].phone %></td>
+
+<td>
+            <a href="/delete/<%= data[i]._id %>">delete</a>
+            <a href="/edit/<%= data[i]._id %>">edit</a>
+            <a href="/show/<%= data[i]._id %>">SHOW</a>
+          </td>
+          </tr>
+          <% } %>        
+      </table>
+<% } else { %>
+  no record
+  <% } %>
+
+
+  </div>
+</div>
+</div>
+</div>
+
+</body>

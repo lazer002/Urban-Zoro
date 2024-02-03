@@ -1,0 +1,348 @@
+body {
+  color: white;
+  /* background-image: url(images/bg.jpg);   */
+  background-color: #121213;
+}
+.bgg{  background-color: #121213;
+}
+.search {
+  background-color: rgb(27, 27, 27);
+
+}
+
+
+.search input {
+  outline: rgba(255, 255, 255, 0);
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
+.footer {
+  list-style: none;
+}
+
+.ctype {
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+
+.form {
+  box-shadow: -10px -10px 50px 5px black;
+  border-radius: 10px;
+}
+
+.bgshadow {
+  box-shadow: -12px 10px 50px 5px black;
+
+}
+
+.bgshaow {
+  box-shadow: -12px 10px 50px 5px black;
+  border-radius: 100%;
+  background-size: cover;
+}
+
+.contact {
+  background-image: url(images/aa.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* .co {
+  background-image: url(images/white-cream-drips-white-background-95640073.jpg);
+  background-size: contain;
+  background-repeat: repeat-x;
+} */
+.nav-link {
+  font-size: larger;
+  color: #121213;
+  font-weight: bolder;
+}
+
+.out {
+  outline: white;
+}
+
+.anime4 {
+  height: 25vh;
+}
+
+.bg1 {
+  /* background-image: url(images/bg.png); */
+  background-image: url(images/3d-rendering-minimalist-abstract-background-primitive-geometrical-figures_338610-5.avif);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.tfade {
+  padding-bottom: 12%;
+}
+
+.nevs {
+  list-style-type: none;
+}
+
+.bg2 {
+  background-image: url(images/login.png);
+  /* background-repeat: no-repeat; */
+  background-size: contain;
+}
+
+.carts {
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ########## */
+.carousel-animation {
+  animation: tfade 5.5s linear;
+}
+
+@keyframes carousel-animation {
+
+  0% {
+    scale: 2;
+    filter: blur(8px);
+
+  }
+
+  98% {
+    scale: 1;
+    filter: blur(0px);
+
+  }
+
+  100% {
+    scale: 2;
+  }
+}
+
+.tfade {
+  animation: tfade 5s linear;
+}
+
+@keyframes tfade {
+
+  0% {
+    letter-spacing: 1em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+
+  77% {
+    filter: blur(0);
+    opacity: 1;
+    letter-spacing: 0em;
+  }
+
+  100% {
+    letter-spacing: 1em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+}
+
+
+
+.la {
+  position: relative;
+}
+
+.a {
+  position: absolute;
+  overflow: hidden;
+}
+
+.animation1 {
+  z-index: -1;
+  -webkit-animation: animation1 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+  animation: animation1 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+}
+
+@-webkit-keyframes animation1 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-50px) translateX(-50px);
+    transform: translateY(-50px) translateX(-50px);
+  }
+}
+
+@keyframes animation1 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-50px) translateX(-50px);
+    transform: translateY(-50px) translateX(-50px);
+  }
+}
+
+
+
+.animation2 {
+  -webkit-animation: animation2 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+  animation: animation2 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+}
+
+@-webkit-keyframes animation2 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-50px) translateX(50px);
+    transform: translateY(-50px) translateX(50px);
+  }
+}
+
+@keyframes animation2 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(-50px) translateX(50px);
+    transform: translateY(-50px) translateX(50px);
+  }
+}
+
+.animation3 {
+  -webkit-animation: animation3 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+  animation: animation3 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+}
+
+@-webkit-keyframes animation3 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(50px) translateX(-50px);
+    transform: translateY(50px) translateX(-50px);
+  }
+}
+
+@keyframes animation3 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(50px) translateX(-50px);
+    transform: translateY(50px) translateX(-50px);
+  }
+}
+
+.animation4 {
+  -webkit-animation: animation4 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+  animation: animation4 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite alternate both;
+}
+
+@-webkit-keyframes animation4 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(75px) translateX(75px);
+    transform: translateY(75px) translateX(75px);
+  }
+}
+
+@keyframes animation4 {
+  0% {
+    -webkit-transform: translateY(0) translateX(0);
+    transform: translateY(0) translateX(0);
+  }
+
+  100% {
+    -webkit-transform: translateY(75px) translateX(75px);
+    transform: translateY(75px) translateX(75px);
+  }
+}
+
+@media (max-width: 767px) {
+  .carousel-inner .carousel-item>div {
+    display: none;
+  }
+
+  .carousel-inner .carousel-item>div:first-child {
+    display: block;
+  }
+}
+
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+  display: flex;
+}
+
+/* medium and up screens */
+@media (min-width: 768px) {
+
+  .carousel-inner .carousel-item-end.active,
+  .carousel-inner .carousel-item-next {
+    transform: translateX(25%);
+  }
+
+  .carousel-inner .carousel-item-start.active,
+  .carousel-inner .carousel-item-prev {
+    transform: translateX(-25%);
+  }
+}
+
+.carousel-inner .carousel-item-end,
+.carousel-inner .carousel-item-start {
+  transform: translateX(0);
+}
+
+
+@media only screen and (max-width: 992px) {
+  #collapseExample {
+    right: 10px;
+    top: 10px;
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .con {
+    font-size: small;
+  }
+
+}
+@media only screen and (max-width: 500px) {
+  .arrow {
+   margin-right: 30px;
+  }
+
+}
+@media only screen and (max-width: 500px) {
+  .arrow {
+   margin-right: 30px;
+  }
+
+}

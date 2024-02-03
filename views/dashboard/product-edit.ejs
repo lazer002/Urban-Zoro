@@ -1,0 +1,75 @@
+<head>
+
+
+</head>
+<body class=" bgg">
+    <%- include('./header.ejs') %>
+   <div class="container mt-5 p-3 border rounded-2 ">
+    <div class="row">
+<div class="col-3">
+    <%- include('./left.ejs') %>
+
+
+</div>
+<div class="col-9 text-light">
+    <div class="p-3 border rounded-2">
+      <form  method="post">
+        <div class=" px-1">
+          <label for="pfile">Item Picture</label> <br>
+          <input type="file" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pfile" value="">
+      </div>
+ 
+        <div class=" px-1">
+          <label for="pname">Product Name</label> <br>
+          <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow"  name="pname" value="<%= pdata.pname %>">
+      </div>
+      <div class=" px-1">
+        <label for="pdiscription">Product Discripton</label> <br>
+        <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pdiscription" value="<%= pdata.pdiscription %>" >
+    </div>
+ 
+  <div class=" px-1">
+    <label for="pdiscount">Discount</label> <br>
+    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pdiscount" value="<%= pdata.pdiscount %>">
+</div>
+<div class=" px-1">
+  <label for="pprice">Price</label> <br>
+  <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pprice" value="<%= pdata.pprice %>">
+</div>
+
+      <div class="mt-3">
+        <input type="submit"class="btn btn-outline-light py-1 my-2 w-50 rounded-2  bgshadow" value="submit" name="submit" >
+      </div>
+    </form>
+
+
+</div>
+
+
+    </div>
+   </div></div>
+
+</body>
+
+
+     <!-- <div class=" px-1">
+        <label >Product Type</label> <br>
+      <select class="w-100">
+        <option>T-shirt</option>
+        <option >Joggers</option>
+        <option >Sneakers</option>
+        <option >Hoodie</option>
+        <option >Jewellery</option>
+      </select>
+    </div> -->
+
+    <!-- <div class=" px-1">
+    <label >Colors</label> <br>
+    <select  class="w-100">
+      <option >1</option>
+      <option >2</option>
+      <option >3</option>
+      <option >4</option>
+      <option >5</option>
+    </select>
+  </div> -->

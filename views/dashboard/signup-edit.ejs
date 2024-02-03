@@ -1,0 +1,80 @@
+<head>
+
+
+</head>
+
+<body class=" ">
+    <%- include('./header.ejs') %>
+
+        <div class="container-fluid bgshadow py-2 animation_in">
+            <div class="container my-3 bgshadow py-2 contact animation_in">
+
+
+
+
+                <!-- form -->
+
+
+                <div class="container my-5 animation_in">
+                    <div class="row ">
+                        <div class=" fw-bold h1 text-center mb-5"><span class="border-bottom">Update Dashboard</span>
+                        </div>
+                        <div class="col-md-6 col-12 form py-4 text-light">
+                            <form method="post">
+                                <div class=" px-1 animation_in">
+                                    <label for="">User Name</label> <br>
+                                    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow"
+                                        name="uname" value="<%= data.uname %>">
+                                </div>
+                                <div class=" px-1 animation_in">
+                                    <label for="">Email</label> <br>
+                                    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow"
+                                        name="email" value="<%= data.email %>">
+                                </div>
+                                <div class=" px-1 animation_in">
+                                    <label for="">Password</label> <br>
+                                    <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow"
+                                        name="password" value="<%= data.password %>">
+                                </div>
+                                <div class=" px-1 my-3 animation_in">
+                                    <label for="">Phone Number</label> <br>
+                                    <input class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="phone"
+                                        value="<%= data.phone %>">
+                                </div>
+
+                                <div class=" px-1 my-5 text-center">
+                                    <input type="submit"
+                                        class="btn btn-outline-light py-1 my-2 w-50 rounded-2  bgshadow"
+                                        value="Save Change">
+                                    <!-- <button class=" btn btn-outline-light py-1 my-2 w-50 rounded-2  bgshadow">Create Account</button> -->
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="col-12 p-5 ">
+                                <div class="la anime4">
+                                    <a href="/Sneakers"> <img src="images/shoes/7.png" alt=""
+                                            class="img-fluid a animation1" width="350" loading="lazy">
+                                        <img src="images/shoes/2.jpg" alt="" class="img-fluid a animation2" width="400"
+                                            loading="lazy">
+                                        <img src="images/shoes/p5.webp" alt="" class="img-fluid a animation3"
+                                            width="350" loading="lazy">
+                                        <img src="images/shoes/p1.webp" alt="" class="img-fluid a animation4"
+                                            width="270" loading="lazy">
+                                        <img src="images/shoes/1.webp" alt="" class="img-fluid a animation" width="200"
+                                            loading="lazy"></a>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
