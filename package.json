@@ -13,7 +13,7 @@
     "package.json": "^2.0.1"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "name": "lala",
   "version": "1.0.0",
