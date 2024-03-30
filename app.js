@@ -3,16 +3,29 @@ const app=express()
 const  router=express.Router()
 app.set("view engine","ejs")
 app.use(express.static("views"))
-require("./mongo")
-const bodyparser =require("body-parser")
-// require("./mongo")
-const Lala = require("./signup_schema")
-const Products = require("./p_schema")
-const multer = require("multer")
+app.use('/static',express.static("public"))
 
+require("./db/mongo")
+const bodyparser =require("body-parser")
+const Lala = require("./models/signup_schema")
+const Products = require("./models/p_schema")
+const multer = require("multer")
+const bcrypt = require('bcrypt')
+const cookie = require('cookie-parser')
+const session = require("express-session")
 app.use(bodyparser.urlencoded({extended:true}))
 
+app.use(session({
+    secret:'ifwianfianginwignwiangiwa',
+    resave:false,
+    saveUninitialized:false ,
+    cookie:{
+        maxAge:600000
+    },
+}))
 
+
+ 
 
 
 // view
@@ -76,7 +89,7 @@ router.post("/pedit/:id",async(req,res)=>{
 
 const storage=multer.diskStorage({
 destination:(req,file,cb)=>{
-    cb(null,"../URBARZORO/upload")
+    cb(null,"../Urban-Zoro/public/product")
 },
  filename:(req,file,cb)=>{
 cb(null,file.originalname)
@@ -96,12 +109,14 @@ const filefilter=(req,file,cb)=>{
 let upload=multer({storage,filefilter})
 
 router.post("/dashboard-add",upload.single('pfile'),(req,res)=>{
+    const {ptype,pname,pdiscription,pdiscount,pprice}=req.body
     var details = new Products({
+        ptype,
     pfile:req.file.filename,
-  pname:req.body.pname,
-  pdiscription:req.body.pdiscription,
-  pdiscount:req.body.pdiscount,
-  pprice:req.body.pprice
+  pname,
+  pdiscription,
+  pdiscount,
+  pprice
     })
   details.save().then((result)=>{
       console.log(result)
@@ -123,7 +138,8 @@ router.post("/dashboard-add",upload.single('pfile'),(req,res)=>{
 // #############################################################
 
 router.get("/",(req,res)=>{
-    res.render("index")
+        res.render("index")
+
 })
 
 
@@ -185,14 +201,15 @@ router.get("/signup",(req,res)=>{
 })
 
 router.post("/signup",(req,res)=>{
-    var detail= new Lala({
-uname: req.body.uname,
-email:req.body.email,
-password:req.body.password,
-phone:req.body.phone })
+    const {uname,email,password,phone}=req.body
+    let detail= new Lala({
+        uname,email,password,phone
+})
 
 detail.save().then((result)=>{
-    console.log(result)})
+    console.log(result,'gggg')
+    res.redirect('/signin')
+})
     .catch ((err) =>{
         console.log(err)})
     })
@@ -210,7 +227,21 @@ router.get("/cart",(req,res)=>{
 
 
 
+router.post("/signin",async(req,res)=>{
+const {email,password}=req.body
+let data = await Lala.findOne({email})
+if(data){
+    console.log(data.uname);
+const ismatch = await bcrypt.compare(password,data.password)
+if(ismatch){
 
+    req.session.user = data.uname
+    req.session.role = data.user_role
+    req.session.user_id = data._id
+    res.redirect('/')
+}
+}
+})
 
 
 
