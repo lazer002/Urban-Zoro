@@ -7,6 +7,61 @@ const router = express.Router()
 const bcrypt = require('bcrypt')
 
 
+
+
+
+
+router.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    res.locals.role = req.session.role;
+    res.locals.user_id = req.session.user_id;
+    next();
+ 
+ });
+
+
+
+ const gateway = function (req, res, next) {
+    if (req.session.user) {
+       next();
+    } else {
+       res.redirect('/signin');
+    }
+ };
+
+
+
+
+ router.post('/addtocart',gateway,async(req, res) => {
+    try {
+
+        const { ptype,pfile, pname, psize, pquantity, pprice, pcolor } = req.body
+        const cartq = new Cart({
+            ptype,
+             pfile,
+            pname,
+             psize,
+              pquantity,
+               pprice,
+                pcolor,   
+        })
+        await cartq.save()
+console.log(cartq);
+    }        
+    catch (error) {
+        console.log(error);
+    }
+})
+
+
+
+
+
+
+
+
+
+
 router.get("/dashboard-viewproduct", async (req, res) => {
     try {
         var pdata = await Products.find({});
@@ -107,7 +162,12 @@ router.post("/dashboard-add", upload.single('pfile'), (req, res) => {
 
 
 
-
+router.get('/cartonpage', gateway, async (req, res) => {
+const product = await Cart.find({})
+       res.send({ product: product })
+ 
+    })
+ 
 
 
 
@@ -115,8 +175,9 @@ router.post("/dashboard-add", upload.single('pfile'), (req, res) => {
 
 // #############################################################
 
-router.get("/", (req, res) => {
-    res.render("index")
+router.get("/",gateway,(req, res) => {
+    console.log(req.session);
+    res.render("index",{role:req.session})
 
 })
 
@@ -152,27 +213,6 @@ router.get('/product:id', async (req, res) => {
 
 
 
-router.post('/addtocart', async(req, res) => {
-    console.log(req.body);
-    try {
-        const { ptype,pfile, pname, psize, pquantity, pprice, pcolor } = req.body
-        const cartq = new Cart({
-            ptype,
-             pfile,
-            pname,
-             psize,
-              pquantity,
-               pprice,
-                pcolor,
-             
-        })
-        await cartq.save()
-        console.log(cartq, 'cartcartcart');
-    }
-    catch (error) {
-        console.log(error);
-    }
-})
 
 
 
@@ -182,47 +222,46 @@ router.post('/addtocart', async(req, res) => {
 
 
 
-
-router.get("/Sneakers", async (req, res) => {
+router.get("/Sneakers", gateway,async (req, res) => {
     const Sneakers = await Products.find({ ptype: 'Sneakers' })
-    res.render("Sneakers", { Sneakers: Sneakers })
+    res.render("Sneakers", { Sneakers: Sneakers,role:req.session })
 })
 
 
 
-router.get("/T-shirts", async (req, res) => {
+router.get("/T-shirts",gateway, async (req, res) => {
     const Tshirts = await Products.find({ ptype: 'T-shirt' })
 
-    res.render("T-shirts", { Tshirts: Tshirts })
+    res.render("T-shirts", { Tshirts: Tshirts,role:req.session })
 })
 
 
-router.get("/Joggers", async (req, res) => {
+router.get("/Joggers",gateway, async (req, res) => {
     const Joggers = await Products.find({ ptype: 'Joggers' })
-    res.render("Joggers", { Joggers: Joggers })
+    res.render("Joggers", { Joggers: Joggers,role:req.session })
 })
 
 
-router.get("/Hoodie", async (req, res) => {
+router.get("/Hoodie", gateway,async (req, res) => {
     const Hoodie = await Products.find({ ptype: 'Hoodie' })
-    res.render("Hoodie", { Hoodie: Hoodie })
+    res.render("Hoodie", { Hoodie: Hoodie,role:req.session })
 })
 
 
-router.get("/Jewellery", async (req, res) => {
+router.get("/Jewellery",gateway, async (req, res) => {
     const Jewellery = await Products.find({ ptype: 'Jewellery' })
-    res.render("Jewellery", { Jewellery: Jewellery })
+    res.render("Jewellery", { Jewellery: Jewellery,role:req.session })
 })
 
 
 
-router.get("/Contact", (req, res) => {
-    res.render("Contact")
+router.get("/Contact",gateway, (req, res) => {
+    res.render("Contact",{role:req.session})
 })
 
 
-router.get("/About", (req, res) => {
-    res.render("About")
+router.get("/About",gateway, (req, res) => {
+    res.render("About",{role:req.session})
 })
 
 router.get("/signin", (req, res) => {
@@ -237,7 +276,6 @@ router.post("/signup", (req, res) => {
     let detail = new Lala({
         uname, email, password, phone
     })
-
     detail.save().then((result) => {
 
         res.redirect('/signin')
@@ -252,22 +290,18 @@ router.post("/signup", (req, res) => {
 
 
 
-router.get("/cart", (req, res) => {
-    res.render("cart")
+router.get("/cart", gateway,(req, res) => {
+    res.render("cart",{role:req.session})
 })
 
 
-
-
-
-router.post("/signin", async (req, res) => {
+ 
+router.post("/signin",async (req, res) => {
     const { email, password } = req.body
     let data = await Lala.findOne({ email })
     if (data) {
-        console.log(data.uname);
         const ismatch = await bcrypt.compare(password, data.password)
         if (ismatch) {
-
             req.session.user = data.uname
             req.session.role = data.user_role
             req.session.user_id = data._id
@@ -285,21 +319,21 @@ router.post("/signin", async (req, res) => {
 
 //################# dashboard #########################
 
-router.get("/dashboard", (req, res) => {
-    res.render("dashboard/index")
+router.get("/dashboard",gateway, (req, res) => {
+    res.render("dashboard/index",{role:req.session})
 })
 
 
-router.get("/dashboard-add", (req, res) => {
-    res.render("dashboard/addproduct")
+router.get("/dashboard-add",gateway, (req, res) => {
+    res.render("dashboard/addproduct",{role:req.session})
 })
 
-router.get("/dashboard-viewproduct", (req, res) => {
-    res.render("dashboard/viewproduct")
+router.get("/dashboard-viewproduct", gateway,(req, res) => {
+    res.render("dashboard/viewproduct",{role:req.session})
 })
 
-router.get("/dashboard-admin", (req, res) => {
-    res.render("dashboard/viewsignup")
+router.get("/dashboard-admin",gateway, (req, res) => {
+    res.render("dashboard/viewsignup",{role:req.session})
 })
 
 // get data in mongo and show in dashboard
@@ -307,11 +341,11 @@ router.get("/dashboard-admin", (req, res) => {
 
 
 
-router.get('/dashboard-viewsignup', async (req, res) => {
+router.get('/dashboard-viewsignup',gateway, async (req, res) => {
     try {
         const data = await Lala.find({});
         console.log(data);
-        res.render('dashboard/viewsignup', { data: data })
+        res.render('dashboard/viewsignup', { data: data,role:req.session })
     }
     catch (err) {
         console.log(err)

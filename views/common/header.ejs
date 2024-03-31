@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HOME</title>
   <link href="/static/cdn/Bootstrap/bootstrap-v5.3.2.min.css" rel="stylesheet">
+  <script src="/static/cdn/ajax/jquery.min.js"></script>
   <link rel="stylesheet" href="/static/style.css">
   <link rel="icon" href="/images/logo.gif">
   <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
@@ -22,7 +23,7 @@
 
         <ul class="nevs d-flex w-100 text-center justify-content-center p-0">
           <li>
-            <button class="border-0 bg-transparent pt-3 ps-2" type="button" data-bs-toggle="offcanvas"
+            <button class="border-0 bg-transparent p-4" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><img src="/images/search.png" alt="cart"
                 width="35"></button>
             <div class="offcanvas offcanvas-top  search" tabindex="-1" id="offcanvasTop"
@@ -42,10 +43,14 @@
                 width=""></a></li>
         </ul>
         <ul class="ms-auto nevs d-flex pt-3 px-3 carty">
-          <li class=" ms-auto"><a class=" me-3 pt-3" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></li>
+          <li class=" ms-auto"><a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></li>
 
-          <li class="ms-auto "><a class=" " href="/signin">
-              <img src="/images/acc.png" alt="cart" width="40"> </a>
+          <li class="ms-auto ">
+            <% if (role) { %>           
+            <div class="profilepic"><%= role.user  %></div>  
+              <% } else { %>
+                <a class=" " href="/signin"><img src="/images/acc.png" alt="cart" width="40"> </a>                  
+                      <% } %>
           </li>
         </ul>
       </div>
@@ -119,22 +124,12 @@
         src="product/close.png" alt="">X</button>
   </div>
   <div class="offcanvas-body text-light ">
-    <div class="py-3 border-bottom"><span class="ps-2"> Joggers</span></span> <br>
-      <p class="ps-5 ms-5 text-warning"> ₹12,910
-      </p>
+
+    <div id="cartbody">
+
     </div>
 
-    <div class="py-3 border-bottom ">
-      <span><img src="product/cart2.png" alt="" class=""><span class="ps-2"> T-shirts</span></span> <br>
-      <p class="ps-5 ms-5 text-warning">₹12,210
-      </p>
-    </div>
-
-    <div class="py-3">
-      <span><img src="product/cart3.png" alt="" class=""><span class="ps-2"> Sneakers</span></span> <br>
-      <p class="ps-5 ms-5 text-warning"> ₹66,540
-      </p>
-    </div>
+  
 
     <div class=" pt-3 border-top border-2 ">
 
@@ -179,6 +174,51 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(()=>{
+  $.ajax({
+        type: 'GET',
+        url: '/cartonpage',
+
+        success: function (response) {
+
+          document.getElementById('cartbody').innerHTML = ' ';
+
+          for (let i = 0; i < response.product.length; i++) {
+            $('#cartbody').append(`
+              <div class="py-3 border-bottom border-success">
+                <div class="row">
+               
+                  <img src="/static/images/category/product/${response.product[i].cart_image}" alt="" class="w-25">
+              
+                <div class="col-2">
+                  <span class="ps-2">${response.product[i].cart_pname}</span>
+                </div> 
+                <div class="col-2">
+                 ${response.product[i].cart_pprice}
+                </div>
+                  <div class="col-3">
+                    <input type="number" value="${response.product[i].product_quantity}"
+            class="bg-black text-light w-100 out" id="product_quantity">
+              <input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
+
+                </div>
+                  <div class="col-2 ">
+                  <button class="dddd">
+                    <img src="/static/images/icon/delete.png" alt="">
+                  </button>
+                </div> 
+                </div> 
+              </div>
+            `);
+          }
+        }
+      });
+    })
+
+
+
+</script>
 </body>
 
 </html>
