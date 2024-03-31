@@ -1,0 +1,406 @@
+
+
+<head>
+
+    <%- include('./common/header.ejs') %>
+</head>
+
+<body>
+
+
+        <!-- items -->
+
+        <div class="container p-5 my-5">
+            <form action="addtocart" method="post">
+            <div class="row p-5  bgshadow">
+                <div class="col-lg-1 col-sm-2 animation_left">
+                    <% for(i=0;i<sideimg.length;i++) {%>
+                    <div class="col-12  mb-4 "><img src="/static/product/<%= sideimg[i].pfile %>" alt="" class="img-fluid bgshadow" loading="lazy"></div>
+                    <%}%>
+                </div>
+                <div class="col-lg-5  col-sm-10">
+
+                    <div class="col-12 bgshadow animation_left">
+                        <img src="/static/product/<%= product.pfile %>" alt="" class="img-fluid w-100"  loading="lazy">
+                        <input type="hidden" name="pfile" id="" value="<%= product.pfile %>">
+                        <input type="hidden" name="ptype" id="" value="<%= product.ptype %>">
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12 animation_right">
+                    <h2 class=""><%= product.pname %></h2>
+                    <img src="images/5s.png" alt="" class="my-3 animation_right" width="100">
+
+                    <div class="h5 fs-light pb-4 animation_right"> <del> Rs. <%= product.pdiscount %>.00</del> Rs. <%= product.pprice %>.00</div>
+                    <input type="hidden" name="pname" value="<%= product.pname %>" id="">
+<input type="hidden" name="pprice" id="" value="<%= product.pprice %>">
+                    <div class=" pb-4 animation_right">
+                        <label for="" class="h5">COLOR</label> <label for="" class="h5 ps-5">SIZE</label><br>
+                        <select  id="" class="bgshadow" name="pcolor">
+                            <option value="Black ">Black</option>
+                            <option value="White">White</option>
+                            <option value="Red">Red</option>
+                            <option value="Orange">Orange</option>
+                        </select>
+                        <select id="" class="ms-3 ps-4 bgshadow" name="psize">
+                            <option value="S ">S</option>
+                            <option value="M">M</option>
+                            <option value="L">L</option>
+                            <option value="XL">XL</option>
+                            <option value="XXL">XXL</option>
+                        </select>
+                        <select id="" class="ms-3 ps-4 bgshadow" name="pquantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="col-12 bgshadow animation_right">
+                     
+                            <input type="hidden" value="<%= product._id %>" name="cartproduct">
+                    <a href="/buy<%= product._id %>">    <button class="btn btn-outline-light h4 w-100 rounded-2 ">BUY NOW</button></a>
+                   <button class="btn btn-outline-light h4 w-100 rounded-2" type="submit">ADD TO CART</button>
+             
+                    </div>
+                    <div class="col-12 bgshadow animation_right">
+                        <div class="accordion  accordion-flush" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button bg-black" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <h4 class="fw-bold text-light">Description </h1>
+
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse bg-black text-light"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <ul>
+                                            <li> Product Dimensions : 15.24 x 15.24 x 2.54 cm; 372 Grams</li>
+                                            <li> Date First Available : 1 June 2021</li>
+                                            <li> Manufacturer : Adidas</li>
+                                            <li> ASIN : B087C49YTS</li>
+                                            <li> Item model number : JII09</li>
+                                            <li>Country of Origin : USA</li>
+                                            <li>Department : Mens</li>
+                                            <li>Manufacturer : Adidas</li>
+                                            <li>Item Weight : 372 g</li>
+                                            <li>Item Dimensions LxWxH : 15.2 x 15.2 x 2.5 Centimeters</li>
+                                            <li>Included Components : Jacket</li>
+                                            <li>Generic Name : Jacket</li>
+                                            <li>Best Sellers Rank: #1,252,916 in Clothing & Accessories (See Top 100 in
+                                                Clothing & Accessories) </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  -->
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-black" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <h4 class="fw-bold text-light">Review </h1>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse bg-black text-light"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+
+                                        <div class="border-bottom mb-3">
+                                            <span><img src="images/acc.png" alt="" width="30" class="me-3"></span><img
+                                                src="images/5s.png" alt="" class=" " width="100"><br>
+                                            <h5 class="fw-bold">Ashutosh singh</h5>
+                                            <p>Very comfortable made well</p>
+                                        </div>
+                                        <div class="border-bottom mb-3">
+                                            <span><img src="images/acc.png" alt="" width="30" class="me-3"></span><img
+                                            src="images/3s.png" alt="" class=" " width="100"><br>
+                                            <h5 class="fw-bold"> Alka Kumari</h5>
+                                            <p>Well stitched, comfortable and 100%cotton.</p>
+                                        </div>
+                                        <div class="border-bottom mb-3">
+                                            <span><img src="images/acc.png" alt="" width="30" class="me-3"></span><img
+                                            src="images/2s.png" alt="" class=" " width="100"><br>
+                                            <h5 class="fw-bold">D Wigand</h5>
+                                            <p>I have many different colors. I use them for winter running. I change the
+                                                weight of my undergarments depending on the weather. Can't do without
+                                                them. I get many compliments while running in them.</p>
+                                        </div>
+                                        <div class="border-bottom mb-3">
+                                            <span><img src="images/acc.png" alt="" width="30" class="me-3"></span><img
+                                            src="images/4s.png" alt="" class=" " width="100"><br>
+                                            <h5 class="fw-bold">Erik H.
+                                            </h5>
+                                            <p>These Tricot track tops are some of the best looking/fitting Adidas
+                                                jackets I’ve owned.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <span><img src="images/acc.png" alt="" width="30" class="me-3"></span><img
+                                            src="images/5s.png" alt="" class=" " width="100"><br>
+                                            <h5 class="fw-bold">pat kelly</h5>
+                                            <p>As advertised</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--  -->
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed bg-black" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                        aria-controls="collapseThree">
+                                        <h4 class="fw-bold text-light">Q & A </h1>
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse bg-black text-light"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="card-body">
+                                            <span class="">
+                                                <h4 class="fw-bold ">Questions and Answers</h4>
+                                                <strong> Q. Are the pre installed fans used in this cabinet availabe to
+                                                    buy</strong>
+                                                <p>A. Unfortunately no, that would jeopardize the stock from where the
+                                                    fans are sold out.</p>
+                                            </span>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="">
+                                                <strong> Q. Can i buy this cabinet from their offline store in
+                                                    bhubaneswar?</strong>
+                                                <p>A. You can contact the Bhubaneswar store at 8093046200 (10:30 am to
+                                                    7:30 pm, Mon-Sat) to know any
+                                                    product availability.</p>
+                                            </span>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="">
+                                                <strong> Q. does it come with a fan & RGB hub to control lights via
+                                                    software</strong>
+                                                <p>A. A controller is included. </p>
+                                            </span>
+                                        </div>
+                                        <div class="card-body">
+                                            <span class="">
+                                                <strong> Q. How to enable mother board sync? I was not able to controll
+                                                    the LED using motherboard even
+                                                    after connect to ARGB header</strong>
+                                                <p>A. Please mail us at info@mdcomputers.in mentioning the order id and
+                                                    issue. </p>
+                                            </span>
+                                        </div>
+
+
+                                        <ul class="pagination justify-content-center ">
+                                            <li class="page-item"><a class="page-link  bg-black text-light" href="#">Previous</a>
+                                            </li>
+                                            <li class="page-item"><a class="page-link bg-black text-light" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link bg-black text-light" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link bg-black text-light" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link bg-black text-light" href="#">Next</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        </div>
+        </div>
+        </div>
+        </div>
+
+
+        <!-- bottom c -->
+        <div class="container-fluid text-center my-5  bgshadow">
+            <h1 class="fw-bold  py-4 ">RELATED PRODUCTS</h1>
+            <div class="row">
+                <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active alla" data-bs-interval="2000">
+                            <div class="col-md-3">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/6.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h5>
+                                            <img src="images/5s.png" alt="">
+                                            <P class="fw-bold"> ₹44,999 <del class="text-body">₹55,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/7.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h5>
+                                            <img src="images/4s.png" alt="">
+                                            <P class="fw-bold"> ₹59,999 <del class="text-body">₹65,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/8.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h5>
+                                            <img src="images/3s.png" alt="">
+                                            <P class="fw-bold"> ₹48,999 <del class="text-body">₹55,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/9.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h5>
+                                            <img src="images/5s.png" alt="">
+                                            <P class="fw-bold"> ₹74,999 <del class="text-body">₹85,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/10.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h5>
+                                            <img src="images/4s.png" alt="">
+                                            <P class="fw-bold"> ₹65,999 <del class="text-body">₹75,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/11.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h3>
+                                                <img src="images/5s.png" alt="">
+                                                <P class="fw-bold"> ₹62,999 <del class="text-body">₹65,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/12.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h3>
+                                                <img src="images/3s.png" alt="">
+                                                <P class="fw-bold"> ₹69,999 <del class="text-body">₹75,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="carousel-item alla" data-bs-interval="2000">
+                            <div class="col-md-3 ">
+                                <a href="/Hoodie-p" class="text-decoration-none text-light">
+                                    <div class="card bg-transparent  border-0 bgshadow">
+                                        <div class="card-img">
+                                            <img src="images/hoodie/13.png" class="img-fluid"
+                                                loading="lazy">
+                                        </div>
+                                        <div class="card-body text-light">
+                                            <h5>Techwear Cargo Pants | URBXN.1 Techwear</h3>
+                                                <img src="images/5s.png" alt="">
+                                                <P class="fw-bold"> ₹32,999 <del class="text-body">₹35,999</del></p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+
+</div>
+
+
+        <%- include('./common/footer.ejs') %>
+</body>
+<script>let items = document.querySelectorAll('.ala .alla')
+
+    items.forEach((el) => {
+        const minPerSlide = 4
+        let next = el.nextElementSibling
+        for (var i = 1; i < minPerSlide; i++) {
+            if (!next) {
+                // wrap carousel by using first child
+                next = items[0]
+            }
+            let cloneChild = next.cloneNode(true)
+            el.appendChild(cloneChild.children[0])
+            next = next.nextElementSibling
+        }
+    })
+// ScrollReveal({ reset: true,
+// distance:"60px",
+// duration:2500,
+// delay:400});
+
+// ScrollReveal().reveal('.animation_in', { delay: 500,origin:'top',interval:200 });
+// ScrollReveal().reveal('.animation_out', { delay: 500,origin:'bottom',interval:200 });
+// ScrollReveal().reveal('.animation_left', { delay: 500,origin:'left',interval:200 });
+// ScrollReveal().reveal('.animation_right', { delay: 500,origin:'right',interval:200 });
+
+</script>
