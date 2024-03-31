@@ -23,7 +23,7 @@
   },
   "name": "lala",
   "version": "1.0.0",
-  "main": "demo.js",
+  "main": "app.js",
   "author": "",
   "license": "ISC",
   "description": ""
