@@ -1,31 +1,33 @@
-const mongo =require('mongoose')
+const mongo = require('mongoose')
 
 const Cartsche = new mongo.Schema({
-    ptype:{
-        type:String
+    ptype: {
+        type: String
     },
-pfile:{
-        type:Buffer
+    pfile: {
+        type: Buffer
     },
-pname:{
-    type:String
-},
-psize:{
-    type:String
-},
+    pname: {
+        type: String
+    },
+    pprice: {
+        type: String
+    },
+    pcolor: {
+        type: String
+    }, 
+    psize: {
+        type: String
+    },
 
-pquantity:{
-    type:String
-},
-pprice:{
-    type:String
-},
-pcolor:{
-    type:String
-},pquantity:{type:String}
+    pquantity: {
+        type: String
+    },
+    user_id: 
+    { type: String }
 
 })
 
-const Cart = mongo.model('cart',Cartsche)
+const Cart = mongo.model('cart', Cartsche)
 
-module.exports=Cart
+module.exports = Cart

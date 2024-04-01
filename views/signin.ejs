@@ -16,11 +16,14 @@
 
 <div class="container my-5 animation_in pb-5">
 <div class="row ">
+
+    <input type="hidden" id="nn" value="<%=msg%>">
+ 
     <div class=" fw-bold h1 text-center mb-5"><span class="border-bottom"> Sign In</span></div>
     <div class="col-md-6 col-12 form py-4 text-light">
         <form action="/signin" method="post">
 <div class=" px-1 animation_in">
-    <label for="">User Email</label> <br>
+    <label for="">User Email <%=msg%></label> <br>
     <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out  bgshadow" name="email">
 </div>
 <div class=" px-1 animation_in">

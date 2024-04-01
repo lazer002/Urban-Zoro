@@ -31,10 +31,21 @@ router.use((req, res, next) => {
 
 
 
+const cartstorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "../Urban-Zoro/public/cart")
+    },
+    filename: (req, file, cb) => {
+        // cb(null,file.originalname)
+        cb(null, Date.now() + (file.originalname))
+    }
+})
 
- router.post('/addtocart',gateway,async(req, res) => {
+let cartupload = multer({ storage: cartstorage })
+
+
+ router.post('/addtocart', cartupload.single('pfile'),gateway,async(req, res) => {
     try {
-
         const { ptype,pfile, pname, psize, pquantity, pprice, pcolor } = req.body
         const cartq = new Cart({
             ptype,
@@ -44,9 +55,10 @@ router.use((req, res, next) => {
               pquantity,
                pprice,
                 pcolor,   
+                user_id:req.session.user_id
         })
         await cartq.save()
-console.log(cartq);
+
     }        
     catch (error) {
         console.log(error);
@@ -129,16 +141,16 @@ const storage = multer.diskStorage({
     }
 })
 
-const filefilter = (req, file, cb) => {
-    const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"]
-    if (allowedFileTypes.includes(file.mimetype)) {
-        cb(null, true)
-    } else {
-        cb(null, false)
-    }
-}
+// const filefilter = (req, file, cb) => {
+//     const allowedFileTypes = ["image/jpeg", "image/jpg", "image/png"]
+//     if (allowedFileTypes.includes(file.mimetype)) {
+//         cb(null, true)
+//     } else {
+//         cb(null, false)
+//     }
+// }
 
-let upload = multer({ storage, filefilter })
+let upload = multer({ storage:storage })
 
 router.post("/dashboard-add", upload.single('pfile'), (req, res) => {
 
@@ -163,7 +175,7 @@ router.post("/dashboard-add", upload.single('pfile'), (req, res) => {
 
 
 router.get('/cartonpage', gateway, async (req, res) => {
-const product = await Cart.find({})
+const product = await Cart.find({user_id:req.session.user_id})
        res.send({ product: product })
  
     })
@@ -177,7 +189,7 @@ const product = await Cart.find({})
 
 router.get("/",gateway,(req, res) => {
     console.log(req.session);
-    res.render("index",{role:req.session})
+    res.render("index",{role:req.session,nik:'nikhil'})
 
 })
 
@@ -195,26 +207,6 @@ router.get('/product:id', async (req, res) => {
         console.log(err);
     }
 });
-
-
-
-// const cartstorage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, "../Urban-Zoro/public/product")
-//     },
-//     filename: (req, file, cb) => {
-//         // cb(null,file.originalname)
-//         cb(null, Date.now() + (file.originalname))
-//     }
-// })
-
-// let cartupload = multer({ storage: cartstorage })
-// , cartupload.single('pfile')
-
-
-
-
-
 
 
 
@@ -265,7 +257,7 @@ router.get("/About",gateway, (req, res) => {
 })
 
 router.get("/signin", (req, res) => {
-    res.render("signin")
+    res.render("signin",{msg:'done'})
 })
 router.get("/signup", (req, res) => {
     res.render("signup")
@@ -297,6 +289,7 @@ router.get("/cart", gateway,(req, res) => {
 
  
 router.post("/signin",async (req, res) => {
+try {
     const { email, password } = req.body
     let data = await Lala.findOne({ email })
     if (data) {
@@ -304,10 +297,16 @@ router.post("/signin",async (req, res) => {
         if (ismatch) {
             req.session.user = data.uname
             req.session.role = data.user_role
-            req.session.user_id = data._id
-            res.redirect('/')
+            req.session.user_id = data._id;
+
+          res.redirect('/')
         }
+    }else{
+        res.redirect('/signin')
     }
+} catch (error) {
+    console.log(error);
+}
 })
 
 
