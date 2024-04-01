@@ -8,7 +8,7 @@
   <title>HOME</title>
   <link href="/static/cdn/Bootstrap/bootstrap-v5.3.2.min.css" rel="stylesheet">
   <script src="/static/cdn/ajax/jquery.min.js"></script>
-  <link rel="stylesheet" href="/static/style.css">
+  <link  href="/static/style.css" rel="stylesheet">
   <link rel="icon" href="/images/logo.gif">
   <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
 
@@ -174,51 +174,5 @@
     </div>
   </div>
 </div>
-<script>
-$(document).ready(()=>{
-  $.ajax({
-        type: 'GET',
-        url: '/cartonpage',
 
-        success: function (response) {
-
-          document.getElementById('cartbody').innerHTML = ' ';
-
-          for (let i = 0; i < response.product.length; i++) {
-            $('#cartbody').append(`
-              <div class="py-3 border-bottom border-success">
-                <div class="row">
-               
-                  <img src="/static/images/category/product/${response.product[i].cart_image}" alt="" class="w-25">
-              
-                <div class="col-2">
-                  <span class="ps-2">${response.product[i].cart_pname}</span>
-                </div> 
-                <div class="col-2">
-                 ${response.product[i].cart_pprice}
-                </div>
-                  <div class="col-3">
-                    <input type="number" value="${response.product[i].product_quantity}"
-            class="bg-black text-light w-100 out" id="product_quantity">
-              <input type="hidden" name="" id="product_id" value="${response.product[i].product_id}">
-
-                </div>
-                  <div class="col-2 ">
-                  <button class="dddd">
-                    <img src="/static/images/icon/delete.png" alt="">
-                  </button>
-                </div> 
-                </div> 
-              </div>
-            `);
-          }
-        }
-      });
-    })
-
-
-
-</script>
-</body>
-
-</html>
+<script src="/static/script.js"></script>
