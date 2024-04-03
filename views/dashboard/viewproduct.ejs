@@ -2,9 +2,9 @@
 
 
 </head>
-<body class=" bgg">
+<body class=" bgg-dash">
     <%- include('./header.ejs') %>
-   <div class="container mt-5 p-3 border rounded-2 ">
+   <div class="container mt-5 p-3 border rounded-2 glass">
     <div class="row">
 <div class="col-3">
     <%- include('./left.ejs') %>
@@ -43,9 +43,11 @@
     
 
 <td>
-<a href="/pshow/<%= pdata[a]._id %>">show</a>
-<a href="/pedit/<%= pdata[a]._id %>">edit</a>
-<a href="/pdelete/<%= pdata[a]._id %>">delete</a>
+<a href="/pshow/<%= pdata[a]._id %>"class="px-2"><i class="fa fa-solid fa-trash"></i></a>
+<a href="/pedit/<%= pdata[a]._id %>" class="px-2"><i class="fas fa-solid fa-pen"></i></a>
+
+<a href="/pdelete/<%= pdata[a]._id %>" class="px-2"><i class="fa fa-solid fa-eye"></i></a>
+ 
 
 </td>
 

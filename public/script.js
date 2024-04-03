@@ -1,22 +1,4 @@
-$(document).ready(()=>{
-     
-    const x=document.getElementById('ajit').value
 
-    
-if(x=='nikhil'){
-alert('bhai shi h')
-}
-
-
-const z=document.getElementById('nn').value
-if(z=='done'){
-alert('chhutiya bhag yha se')
-}else{
-    console.log('nn')
-}
-
-
-  })
 
 $(document).ready(()=>{
     $.ajax({

@@ -10,7 +10,8 @@ body {
 
 }
 
-
+a{text-decoration: none !important;
+color: white !important;}
 .search input {
   outline: rgba(255, 255, 255, 0);
   border: 2px solid rgba(255, 255, 255, 0);
@@ -353,3 +354,15 @@ body {
   align-items: center;
 width: 50px;
 height: 50px;}
+
+.bgg-dash{
+  background: rgb(0,255,203);
+  background: radial-gradient(circle, rgba(7, 7, 7, 0.1) 0%, rgba(59, 59, 59, 0.23) 100%),url('/static/images/bg.png');
+ background-attachment: fixed;
+z-index: -1;}
+.glass {
+  background: rgba(255 255 255 / 2%);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.158);
+  backdrop-filter: blur(4px);
+}

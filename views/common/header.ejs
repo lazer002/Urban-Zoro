@@ -46,7 +46,7 @@
           <li class=" ms-auto"><a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></li>
 
           <li class="ms-auto ">
-            <% if (role) { %>           
+            <% if (role.user) { %>           
             <div class="profilepic"><%= role.user  %></div>  
               <% } else { %>
                 <a class=" " href="/signin"><img src="/images/acc.png" alt="cart" width="40"> </a>                  

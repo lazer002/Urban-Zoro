@@ -29,6 +29,14 @@ router.use((req, res, next) => {
     }
  };
 
+ const admingateway = function (req, res, next) {
+    if (req.session.role=='admin') {
+       next();
+    } else {
+       res.redirect('/signin');
+    }
+ };
+
 
 
 const cartstorage = multer.diskStorage({
@@ -187,9 +195,8 @@ const product = await Cart.find({user_id:req.session.user_id})
 
 // #############################################################
 
-router.get("/",gateway,(req, res) => {
-    console.log(req.session);
-    res.render("index",{role:req.session,nik:'nikhil'})
+router.get("/",(req, res) => {
+    res.render("index",{role:req.session})
 
 })
 
@@ -214,53 +221,53 @@ router.get('/product:id', async (req, res) => {
 
 
 
-router.get("/Sneakers", gateway,async (req, res) => {
+router.get("/Sneakers",async (req, res) => {
     const Sneakers = await Products.find({ ptype: 'Sneakers' })
     res.render("Sneakers", { Sneakers: Sneakers,role:req.session })
 })
 
 
 
-router.get("/T-shirts",gateway, async (req, res) => {
+router.get("/T-shirts", async (req, res) => {
     const Tshirts = await Products.find({ ptype: 'T-shirt' })
 
     res.render("T-shirts", { Tshirts: Tshirts,role:req.session })
 })
 
 
-router.get("/Joggers",gateway, async (req, res) => {
+router.get("/Joggers", async (req, res) => {
     const Joggers = await Products.find({ ptype: 'Joggers' })
     res.render("Joggers", { Joggers: Joggers,role:req.session })
 })
 
 
-router.get("/Hoodie", gateway,async (req, res) => {
+router.get("/Hoodie",async (req, res) => {
     const Hoodie = await Products.find({ ptype: 'Hoodie' })
     res.render("Hoodie", { Hoodie: Hoodie,role:req.session })
 })
 
 
-router.get("/Jewellery",gateway, async (req, res) => {
+router.get("/Jewellery", async (req, res) => {
     const Jewellery = await Products.find({ ptype: 'Jewellery' })
     res.render("Jewellery", { Jewellery: Jewellery,role:req.session })
 })
 
 
 
-router.get("/Contact",gateway, (req, res) => {
+router.get("/Contact", (req, res) => {
     res.render("Contact",{role:req.session})
 })
 
 
-router.get("/About",gateway, (req, res) => {
+router.get("/About", (req, res) => {
     res.render("About",{role:req.session})
 })
 
 router.get("/signin", (req, res) => {
-    res.render("signin",{msg:'done'})
+    res.render("signin",{role:req.session})
 })
 router.get("/signup", (req, res) => {
-    res.render("signup")
+    res.render("signup",{role:req.session})
 })
 
 router.post("/signup", (req, res) => {
@@ -318,21 +325,22 @@ try {
 
 //################# dashboard #########################
 
-router.get("/dashboard",gateway, (req, res) => {
+router.get("/dashboard",admingateway, (req, res) => {
     res.render("dashboard/index",{role:req.session})
 })
 
 
-router.get("/dashboard-add",gateway, (req, res) => {
+router.get("/dashboard-add",admingateway, (req, res) => {
     res.render("dashboard/addproduct",{role:req.session})
 })
 
-router.get("/dashboard-viewproduct", gateway,(req, res) => {
+router.get("/dashboard-viewproduct", admingateway,(req, res) => {
     res.render("dashboard/viewproduct",{role:req.session})
 })
 
-router.get("/dashboard-admin",gateway, (req, res) => {
-    res.render("dashboard/viewsignup",{role:req.session})
+router.get("/dashboard-admin",admingateway,async (req, res) => {
+    const data = await Lala.find({user_role:'admin'});
+    res.render("dashboard/viewadmin",{role:req.session,data: data})
 })
 
 // get data in mongo and show in dashboard
@@ -340,10 +348,9 @@ router.get("/dashboard-admin",gateway, (req, res) => {
 
 
 
-router.get('/dashboard-viewsignup',gateway, async (req, res) => {
+router.get('/dashboard-viewsignup',admingateway, async (req, res) => {
     try {
-        const data = await Lala.find({});
-        console.log(data);
+        const data = await Lala.find({user_role:'user'});
         res.render('dashboard/viewsignup', { data: data,role:req.session })
     }
     catch (err) {
