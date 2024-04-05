@@ -141,12 +141,11 @@ router.post("/pedit/:id", async (req, res) => {
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, "../Urban-Zoro/public/product")
+        cb(null, "./public/product")
     },
-    filename: (req, file, cb) => {
-        // cb(null,file.originalname)
-        cb(null, Date.now() + (file.originalname))
-    }
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "_" + file.originalname)
+     }
 })
 
 // const filefilter = (req, file, cb) => {
@@ -158,12 +157,12 @@ const storage = multer.diskStorage({
 //     }
 // }
 
-let upload = multer({ storage:storage })
+let upload = multer({ storage })
 
 router.post("/dashboard-add", upload.single('pfile'), (req, res) => {
-
+console.log(req.file.filename,'fwafw');
     const { ptype, pname, pdiscription, pdiscount, pprice, pcolr } = req.body
-    var details = new Products({
+    var de = new Products({
         ptype,
         pfile: req.file.filename,
         pname,
@@ -172,7 +171,7 @@ router.post("/dashboard-add", upload.single('pfile'), (req, res) => {
         pprice,
         pcolr
     })
-    details.save().then((result) => {
+    de.save().then((result) => {
         console.log(result)
         res.redirect('/dashboard-add')
     }).catch((err) => {

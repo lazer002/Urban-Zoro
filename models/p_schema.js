@@ -1,4 +1,4 @@
-const { string } = require("i/lib/util")
+
 const mongoose =require("mongoose")
 const Pdetail = new mongoose.Schema({
     ptype:{
