@@ -1,0 +1,154 @@
+<head>
+
+
+</head>
+<body class=" bgg-dash">
+    <%- include('./header.ejs') %>
+   <div class="container mt-5 p-3 border rounded-2 glass">
+    <div class="row">
+<div class="col-3">
+    <%- include('./left.ejs') %>
+
+
+</div>
+<div class="col-9 text-light">
+<div class="text-end">  <button type="button" class="btn text-light p-2 my-4 border border-white ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  ADD PRODUCT +
+ </button></div>
+   
+    <div class="p-3 border rounded-2">
+  
+      <% if(pdata.length>0) { %>
+        <table class="table text-light text-center" id="myTable">
+   <thead>
+    
+    <tr class="h5">
+      <th scope="col">Type</th>
+      <th scope="col">Picture</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">discount</th>
+      <th scope="col">Price</th>
+      <th scope="col">Colors</th>
+      <th scope="col">Edit</th>
+    </tr>
+   </thead>
+  
+   <tbody>
+    <% for( var a=0;a<pdata.length;a++) { %>
+     
+  
+      <tr class="text-center">
+        <td scope="row"><%= pdata[a].ptype %></td>
+
+        <td>
+          <% pdata[a].pfile.forEach(filename => { %>
+            <img src="/static/product/<%= filename %>"
+                alt="" class="w-25 rounded-circle">
+        <% }) %>
+
+        </td>
+
+        <td> <%= pdata[a].pname %> </td>
+        <td> <%= pdata[a].pdiscription %></td>
+        <td>Rs. <%= pdata[a].pdiscount %></td>
+        <td> <%= pdata[a].pprice %> </td>
+        <td> <%= pdata[a].pcolr %> </td>
+  
+  
+  <td>
+  <a href="/pshow/<%= pdata[a]._id %>"class="px-2"><i class="fa fa-solid fa-eye"></i></a>
+  <a href="/pedit/<%= pdata[a]._id %>" class="px-2"><i class="fas fa-solid fa-pen"></i></a>
+  
+  <a href="/pdelete/<%= pdata[a]._id %>" class="px-2"><i class="fa fa-solid fa-trash"></i></i></a>
+  
+  
+  </td>
+  
+      </tr>
+  <% } %> 
+   </tbody>    
+   
+        </table>
+  <% } else { %>
+    no records
+  <% } %>
+  
+
+
+
+
+
+
+
+
+</div>
+
+
+    </div>
+   </div></div>
+   <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog glass text-light rounded-4">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="/weelky_add" method="post" enctype="multipart/form-data">
+  
+            <div class=" px-1">
+              <label >Product Type</label> <br>
+            <select  class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="ptype">
+              <option value="">Select Category</option>
+              <option value="T-shirt">T-shirt</option>
+              <option value="Joggers">Joggers</option>
+              <option value="Sneakers">Sneakers</option>
+              <option value="Hoodie">Hoodie</option>
+              <option value="Jewellery">Jewellery</option>
+            </select>
+          </div>
+          <div class=" px-1">
+            <label for="pfile">Item Picture</label> <br>
+            <input type="file" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pfile" multiple>
+        </div>
+              <div class=" px-1">
+                <label for="pname">Product Name</label> <br>
+                <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pname">
+            </div>
+            <div class=" px-1">
+              <label for="pdiscription">Product Discripton</label> <br>
+              <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pdiscription">
+          </div>
+        
+        <div class=" px-1">
+          <label for="pdiscount">Discount</label> <br>
+          <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pdiscount">
+      </div>
+      <div class=" px-1">
+        <label for="pprice">Price</label> <br>
+        <input type="text" class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pprice">
+      </div>
+      <div class=" px-1">
+          <label >Colors</label> <br>
+          <select class="py-1 my-2 w-100 bg-dark-subtle rounded-2 out bgshadow" name="pcolr">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+            <div class="mt-3">
+              <input type="submit" class="btn btn-outline-light py-1 my-2 w-25 rounded-2  bgshadow" value="submit">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+    
+          <button type="button" class="btn btn-light">Add Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

@@ -108,7 +108,7 @@ color: white !important;}
 
 /* ########## */
 .carousel-animation {
-  animation: tfade 5.5s linear;
+  animation: tfade 5.2s linear;
 }
 
 @keyframes carousel-animation {
@@ -131,7 +131,7 @@ color: white !important;}
 }
 
 .tfade {
-  animation: tfade 5s linear;
+  animation: tfade 5.2s linear;
 }
 
 @keyframes tfade {

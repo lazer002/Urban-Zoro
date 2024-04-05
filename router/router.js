@@ -3,6 +3,7 @@ const multer = require('multer')
 const Lala = require("../models/signup_schema")
 const Products = require("../models/p_schema")
 const Cart = require("../models/cart")
+const Weekly = require("../models/weekly")
 const router = express.Router()
 const bcrypt = require('bcrypt')
 
@@ -37,7 +38,29 @@ router.use((req, res, next) => {
     }
  };
 
-
+ router.post("/signin",async (req, res) => {
+    try {
+    
+        const { email, password } = req.body
+        let data = await Lala.findOne({ email })
+        if (data) {
+            const ismatch = await bcrypt.compare(password, data.password)
+            if (ismatch) {
+                req.session.user = data.uname
+                req.session.role = data.user_role
+                req.session.user_id = data._id;
+                console.log(req.session,'login done');
+              res.redirect('/')
+            }
+        }else{
+            console.log('login fail');
+            res.redirect('/signin')
+        }
+    } catch (error) {
+        console.log(error);
+    }
+    })
+    
 
 const cartstorage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -181,6 +204,7 @@ console.log(req.file.filename,'fwafw');
 
 
 
+
 router.get('/cartonpage', gateway, async (req, res) => {
 const product = await Cart.find({user_id:req.session.user_id})
        res.send({ product: product })
@@ -194,8 +218,9 @@ const product = await Cart.find({user_id:req.session.user_id})
 
 // #############################################################
 
-router.get("/",(req, res) => {
-    res.render("index",{role:req.session})
+router.get("/",async(req, res) => {
+    const sideimg = await Products.find({}).limit(1)
+    res.render("index",{role:req.session,sideimg:sideimg})
 
 })
 
@@ -203,7 +228,6 @@ router.get("/",(req, res) => {
 
 router.get('/product:id', async (req, res) => {
     try {
-        // console.log(req.params.id,'ihaighwahgowahgowajgoawjogjawogjwaojgowajgowajgowajogjwaogj');
         const product = await Products.findOne({ _id: req.params.id });
         const sideimg = await Products.find({ ptype: product.ptype }).limit(5)
 
@@ -294,26 +318,6 @@ router.get("/cart", gateway,(req, res) => {
 
 
  
-router.post("/signin",async (req, res) => {
-try {
-    const { email, password } = req.body
-    let data = await Lala.findOne({ email })
-    if (data) {
-        const ismatch = await bcrypt.compare(password, data.password)
-        if (ismatch) {
-            req.session.user = data.uname
-            req.session.role = data.user_role
-            req.session.user_id = data._id;
-
-          res.redirect('/')
-        }
-    }else{
-        res.redirect('/signin')
-    }
-} catch (error) {
-    console.log(error);
-}
-})
 
 
 
@@ -336,6 +340,13 @@ router.get("/dashboard-add",admingateway, (req, res) => {
 router.get("/dashboard-viewproduct", admingateway,(req, res) => {
     res.render("dashboard/viewproduct",{role:req.session})
 })
+
+router.get("/dashboard-weekly", admingateway,async(req, res) => {
+    const pdata = await Weekly.find({});
+    console.log(pdata);
+    res.render("dashboard/weekly",{role:req.session,pdata:pdata})
+})
+
 
 router.get("/dashboard-admin",admingateway,async (req, res) => {
     const data = await Lala.find({user_role:'admin'});
@@ -408,6 +419,51 @@ router.post("/edit/:id", async (req, res) => {
 })
 
 
+const storagewk = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "./public/product");
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + "_" + file.originalname);
+    }
+});
+
+let uploadwk = multer({ storage: storagewk });
+
+router.post("/weelky_add", uploadwk.array('pfile', 10), (req, res) => {
+
+    console.log(req.files, 'Uploaded files');
+    const filenames = req.files.map(file => file.filename); 
+    
+    const { ptype, pname, pdiscription, pdiscount, pprice, pcolr } = req.body;
+    var de = new Weekly({
+        ptype,
+        pfile: filenames, 
+        pname,
+        pdiscription,
+        pdiscount,
+        pprice,
+        pcolr
+    });
+
+    var de = new Products({
+        ptype,
+        pfile: filenames, 
+        pname,
+        pdiscription,
+        pdiscount,
+        pprice,
+        pcolr
+    }).save()
+
+
+    de.save().then((result) => {
+        console.log(result);
+        res.redirect('/dashboard-weekly');
+    }).catch((err) => {
+        console.log(err);
+    });
+});
 
 
 

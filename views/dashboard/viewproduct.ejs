@@ -17,42 +17,47 @@
 
 
 <% if(pdata.length>0) { %>
-      <table class="table text-light">
- 
-          <tr>
-            <th scope="col">Type</th>
-            <th scope="col">Picture</th>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
-            <th scope="col">discount</th>
-            <th scope="col">Price</th>
-            <th scope="col">Colors</th>
-          </tr>
+      <table class="table text-light text-center" id="myTable">
+ <thead>
+  
+  <tr class="h5">
+    <th scope="col">Type</th>
+    <th scope="col">Picture</th>
+    <th scope="col">Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">discount</th>
+    <th scope="col">Price</th>
+    <th scope="col">Colors</th>
+    <th scope="col">Edit</th>
+  </tr>
+ </thead>
 
-        <% for( var a=0;a<pdata.length;a++) { %>
+ <tbody>
+  <% for( var a=0;a<pdata.length;a++) { %>
    
 
-          <tr>
-            <td scope="row"><%= pdata[a].ptype %></td>
-            <td><%= pdata[a].pfile %></td>
-            <td> <%= pdata[a].pname %> </td>
-            <td> <%= pdata[a].pdiscription %></td>
-            <td>Rs. <%= pdata[a].pdiscount %></td>
-            <td> <%= pdata[a].pprice %> </td>
-            <td> <%= pdata[a].pcolr %> </td>
-    
+    <tr class="text-center">
+      <td scope="row"><%= pdata[a].ptype %></td>
+      <td><img src="/static/product/<%= pdata[a].pfile %>" alt="" class="w-25 rounded-circle"></td>
+      <td> <%= pdata[a].pname %> </td>
+      <td> <%= pdata[a].pdiscription %></td>
+      <td>Rs. <%= pdata[a].pdiscount %></td>
+      <td> <%= pdata[a].pprice %> </td>
+      <td> <%= pdata[a].pcolr %> </td>
+
 
 <td>
-<a href="/pshow/<%= pdata[a]._id %>"class="px-2"><i class="fa fa-solid fa-trash"></i></a>
+<a href="/pshow/<%= pdata[a]._id %>"class="px-2"><i class="fa fa-solid fa-eye"></i></a>
 <a href="/pedit/<%= pdata[a]._id %>" class="px-2"><i class="fas fa-solid fa-pen"></i></a>
 
-<a href="/pdelete/<%= pdata[a]._id %>" class="px-2"><i class="fa fa-solid fa-eye"></i></a>
- 
+<a href="/pdelete/<%= pdata[a]._id %>" class="px-2"><i class="fa fa-solid fa-trash"></i></i></a>
+
 
 </td>
 
-          </tr>
-    <% } %>     
+    </tr>
+<% } %> 
+ </tbody>    
  
       </table>
 <% } else { %>
@@ -69,3 +74,7 @@
    </div></div>
 
 </body>
+
+<script>
+
+</script>

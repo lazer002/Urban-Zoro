@@ -10,37 +10,37 @@
 
       <div class="carousel-inner">
         <div class="carousel-item active carousel-animation" data-bs-interval="5000">
-          <img src="images/s1.png" class="d-block w-100" alt="..." loading="lazy">
+          <img src="images/s1.png" class="d-block w-100" alt="..." >
           <div class="carousel-caption d-none d-md-block">
             <div class="display-4 fw-bold tfade">DO passionately</div>
           </div>
         </div>
         <div class="carousel-item carousel-animation" data-bs-interval="5000">
-          <img src="images/slider2.png" class="d-block w-100" alt="..." loading="lazy">
+          <img src="images/slider2.png" class="d-block w-100" alt="..." >
           <div class="carousel-caption d-none d-md-block">
             <div class="display-4 fw-bold tfade">LIVE meaningfully</div>
           </div>
         </div>
         <div class="carousel-item carousel-animation" data-bs-interval="5000">
-          <img src="images/slider3.png" class="d-block w-100" alt="..." loading="lazy">
+          <img src="images/slider3.png" class="d-block w-100" alt="..." >
           <div class="carousel-caption d-none d-md-block">
             <div class="display-4 fw-bold tfade">DREAM fearlessly</div>
           </div>
         </div>
         <div class="carousel-item carousel-animation" data-bs-interval="5000">
-          <img src="images/s2.png" class="d-block w-100" alt="..." loading="lazy">
+          <img src="images/s2.png" class="d-block w-100" alt="..." >
           <div class="carousel-caption d-none d-md-block">
             <div class="display-4 fw-bold tfade">LIVE meaningfully</div>
           </div>
         </div>
         <div class="carousel-item carousel-animation" data-bs-interval="5000">
-          <img src="images/s3.png" class="d-block w-100" alt="..." loading="lazy">
+          <img src="images/s3.png" class="d-block w-100" alt="..." >
           <div class="carousel-caption d-none d-md-block">
             <div class="display-4 fw-bold tfade">DO passionately</div>
           </div>
         </div>
         <div class="carousel-item carousel-animation" data-bs-interval="5000">
-          <img src="images/s4.png" class="d-block w-100" alt="..." loading="lazy">
+          <img src="images/s4.png" class="d-block w-100" alt="..." >
           <div class="carousel-caption d-none d-md-block">
             <div class="display-4 fw-bold tfade">DREAM fearlessly</div>
           </div>
@@ -127,24 +127,25 @@
 
       <div class="row my-4 bgshadow">
         <div class="col-sm-1 col-2  my-4 bgshadow animation_left">
-          <div class="col-12 my-2 "><img src="images/p2.webp" alt="" class="img-fluid" loading="lazy"></div>
-          <div class="col-12  my-2 "><img src="images/p3.webp" alt="" class="img-fluid" loading="lazy"></div>
-          <div class="col-12  my-2 "><img src="images/p4.webp" alt="" class="img-fluid" loading="lazy"></div>
-          <div class="col-12 my-2 "><img src="images/p5.webp" alt="" class="img-fluid" loading="lazy"></div>
-          <div class="col-12 my-2 "><img src="images/p6.webp" alt="" class="img-fluid" loading="lazy"></div>
+          <% for(i=0;i<sideimg.length;i++) {%>
+            <% sideimg[i].pfile.slice(0, 4).forEach(filename => { %>
+                        <div class="col-12  mb-4 "><img src="/static/product/<%= filename %>" alt=""
+                                class="img-fluid bgshadow" loading="lazy"></div>
+                                <% }) %>
+                     
         </div>
         <div class="col-sm-5 col-10 my-4 animation_left">
 
           <div class="col-10">
-            <img src="images/p1.webp" alt="" class="img-fluid  bgshadow" loading="lazy">
+            <img src="/static/product/<%=sideimg[i].pfile.slice(0, 1) %>" alt="" class="img-fluid  bgshadow" loading="lazy">
           </div>
         </div>
         <div class="col-sm-6 col-12 my-4 animation_right">
-          <h2 class=" animation_right">Techwear Cargo Pants | URBXN.1 Techwear</h2>
+          <h2 class=" animation_right"><%=sideimg[i].pname %></h2>
           <img src="images/5s.png" alt="" class=" animation_right">
 
-          <div class="h5 fs-light pb-4 animation_right"> <del> Rs. 8,100.00</del> Rs. 4,300.00</div>
-
+          <div class="h5 fs-light pb-4 animation_right"> <del> Rs. <%=sideimg[i].pdiscount %></del> Rs. <%=sideimg[i].pprice %></div>
+          <%}%>
           <div class=" pb-4 animation_right">
             <label for="" class="h5">COLOR</label> <label for="" class="h5 ps-5">SIZE</label><br>
             <select name="country" id="" class=" bgshadow">
@@ -170,7 +171,7 @@
 
 
 <!-- model -->
-<div class="modal fade" id="static" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
+<div class="modal fade" id="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop" aria-hidden="true">
   <div class="modal-dialog  modal-dialog-scrollable modal-lg">
     <div class="modal-content text-light">
       <div class="modal-header bg-black">
@@ -180,25 +181,24 @@
       <div class="modal-body bg-black text-light">
                   <div class="container my-5  ">
           <div class="row p-5  bgshadow ">
-              <div class="col-lg-1 col-sm-2">
-                  <div class="col-12 my-2"><img src="images/p2.webp" alt="" class="img-fluid bgshadow" loading="lazy"></div>
-                  <div class="col-12 my-2"><img src="images/p3.webp" alt="" class="img-fluid bgshadow" loading="lazy"></div>
-                  <div class="col-12 my-2"><img src="images/p4.webp" alt="" class="img-fluid bgshadow" loading="lazy"></div>
-                  <div class="col-12 my-2"><img src="images/p5.webp" alt="" class="img-fluid bgshadow" loading="lazy"></div>
-                  <div class="col-12 my-2"><img src="images/p6.webp" alt="" class="img-fluid bgshadow" loading="lazy"></div>
+              <div class="col-lg-1 col-sm-2  pt-2">
+                <% for(i=0;i<sideimg.length;i++) {%>
+                  <% sideimg[i].pfile.slice(0, 6).forEach(filename => { %>
+                  <div class="col-12 mb-3"><img src="/static/product/<%= filename %>" alt="" class="img-fluid bgshadow" loading="lazy"></div>
+                  <% }) %>
               </div>
               <div class="col-lg-5 col-sm-10">
           
-
+               
                   <div class="col-12 bgshadow">
-                      <img src="images/p1.webp" alt="" class="img-fluid w-100" loading="lazy">
+                      <img src="/static/product/<%=sideimg[i].pfile.slice(0, 1) %>" alt="" class="img-fluid w-100" loading="lazy">
                   </div>
               </div>
               <div class="col-lg-6 col-sm-12">
-                  <h2>Dontae Catlett - - Urban Ninja Tapered Techwear Cargo Pants</h2>
+                  <h2>Dontae Catlett - - <%=sideimg[i].pname %></h2>
                   <img src="images/5s.png" alt="" class="my-3" width="100">
-                  <div class="h5 fs-light pb-4"> <del> Rs. 8,100.00</del> Rs. 4,300.00</div>
-
+                  <div class="h5 fs-light pb-4"><del> Rs. <%=sideimg[i].pdiscount %></del> Rs. <%=sideimg[i].pprice %></div>
+                 
                   <div class=" pb-4">
                       <label for="" class="h5">COLOR</label> <label for="" class="h5 ps-5">SIZE</label><br>
                       <select name="country" id="" class="">
@@ -228,7 +228,8 @@
             </div>
       <div class="modal-footer bg-black">
         <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"> Close</button>
-        <button type="button" class="btn btn-outline-light"><a href="/Joggers" class="text-decoration-none text-light">View Full</a></button>
+        <button type="button" class="btn btn-outline-light"><a href="/product<%=sideimg[i]._id %>" class="text-decoration-none text-light">View Full</a></button>
+        <%}%>
       </div>
     </div>
   </div>

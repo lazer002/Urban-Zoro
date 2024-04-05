@@ -1,6 +1,9 @@
 
+ 
+
 
 $(document).ready(()=>{
+
     $.ajax({
           type: 'GET',
           url: '/cartonpage',
