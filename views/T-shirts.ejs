@@ -14,10 +14,10 @@
       <div id="recipeCarousel" class="carousel slide ala " data-bs-ride="carousel">
           <div class="carousel-inner" role="listbox">
               <% for(i=0; i<Tshirts.length;i++) {%>
-                <%console.log(Tshirts,'fwafwa') %>
+          
               <div class="carousel-item <%= i=== 0 ? 'active' :' ' %> alla" data-bs-interval="2000">
                   <div class="col-md-3">
-                      <a href="/<%= Tshirts[i].ptype %>/<%= Tshirts[i]._id %>" class="text-decoration-none text-light">
+                      <a href="/product<%= Tshirts[i]._id %>" class="text-decoration-none text-light">
                           <div class="card bg-transparent border border-0 bgshadow">
                               <div class="card-img">
                                   <img src="/static/product/<%= Tshirts[i].pfile %>" class="img-fluid "
@@ -139,7 +139,7 @@
       <div class="row ">
           <% for(i=0; i<Tshirts.length;i++) {%>
       <div class="col-lg-3 col-sm-4 animation_out">
-          <a href="/<%= Tshirts[i].ptype %>/<%= Tshirts[i]._id %>" class="text-decoration-none text-light">
+          <a href="/product<%= Tshirts[i]._id %>" class="text-decoration-none text-light">
               <div class="card border-0 rounded-0 bg-transparent bgshadow my-3">
                   <img src="/static/product/<%= Tshirts[i].pfile %>" class="card-img-top" alt="..." loading="lazy">
                   <div class="card-body  text-light">
@@ -171,7 +171,7 @@
               <% for(i=0; i<Tshirts.length;i++) {%>
                   <div class="carousel-item <%= i=== 0 ? 'active' :' ' %> alla" data-bs-interval="2000">
                       <div class="col-md-3">
-                          <a href="/<%= Tshirts[i].ptype %>/<%= Tshirts[i]._id %>" class="text-decoration-none text-light">
+                          <a href="/product<%= Tshirts[i]._id %>" class="text-decoration-none text-light">
                               <div class="card bg-transparent border border-0 bgshadow">
                                   <div class="card-img">
                                       <img src="/static/product/<%= Tshirts[i].pfile %>" class="img-fluid "
