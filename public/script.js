@@ -13,8 +13,6 @@ $(document).ready(()=>{
   
             for (let i = 0; i < response.product.length; i++) {
   
-  
-  
             const fileString = String.fromCharCode(...response.product[i].pfile.data);
   
               $('#cartbody').append(`
@@ -69,3 +67,45 @@ $(document).ready(()=>{
   
 
 // alert(x)
+
+
+  // $(document).ready(function () {
+  //   // Add input filters to table headers
+  //   $("#filter th").each(function () {
+  //     var title1 = $(this).text();
+  //     let title = title1.replace(/^\s+|\s+$/gm, "");
+  //     $(this).html('<input type="text" class="form-control  border border-secondary" />');
+  //   });
+  
+  //   // Initialize DataTable with filtering and ordering options
+  //   var table = $("#mytable").DataTable({
+  //     ordering: true,
+  //     order: [],
+  //     paging: true,
+  //     columnDefs: [{ orderable: false, targets: [0] }],
+  //     language: {
+  //       paginate: {
+  //         previous: '<span class="fa fa-chevron-left"></span>',
+  //         next: '<span class="fa fa-chevron-right"></span>',
+  //       },
+  //       lengthMenu:
+  //         'Display <select class="form-control input-sm mt-2">' +
+  //         '<option value="10">10</option>' +
+  //         '<option value="20">20</option>' +
+  //         '<option value="30">30</option>' +
+  //         '<option value="40">40</option>' +
+  //         '<option value="50">50</option>' +
+  //         '<option value="-1">All</option>' +
+  //         "</select> entries",
+  //     },
+  //   });
+  
+  //   // Add event listener for input changes to perform filtering
+  //   $("#filter th input").on("keyup change", function () {
+  //     table
+  //       .column($(this).parent().index() + ":visible")
+  //       .search(this.value)
+  //       .draw();
+  //   });
+  // });
+  

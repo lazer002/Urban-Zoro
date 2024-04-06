@@ -280,6 +280,7 @@
     <div class="container py-5 my-5">
 
       <div class="row">
+
         <% for(i=0; i<Sneakers.length;i++) {%>
           <div class="col-lg-2 col-sm-4  my-2 animation_left">
             <a href="/product<%= Sneakers[i]._id %>">
@@ -299,12 +300,16 @@
                         <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
                         <%}%>
 
+        
+     
                   </span>
                 </div>
               </div>
             </a>
           </div>
+
           <%}%>
+
       </div>
       <div class="col-12 text-center py-5 my-2">
         <button class="btn btn-outline-light  rounded-2 w-25 bgshadow animation_in"><a href="/Sneakers"
@@ -352,8 +357,12 @@
 
     <div class="container ">
       <div class="row ">
+
         <h1 class="py-5  fw-bold text-center animation_in"><span class="border-bottom">Sneak Peak at some of our
             Joggers</span></h1>
+
+      
+  
 
         <% for(i=0; i<Joggers.length;i++) {%>
           <div class="col-lg-2 col-sm-4  my-2 animation_left">
@@ -379,7 +388,12 @@
               </div>
             </a>
           </div>
+
           <%}%>
+
+        </div>
+  
+
       </div>
       <div class="col-12 text-center py-5 ">
         <button class="btn btn-outline-light rounded-2 w-25 animation_out bgshadow"><a href="/Joggers"
@@ -397,6 +411,7 @@
           Upper</span></h1>
 
       <div class="row">
+
         <% for(i=0; i<Hoodie.length;i++) {%>
           <div class="col-lg-2 col-sm-4  my-2 animation_left">
             <a href="/product<%= Hoodie[i]._id %>">

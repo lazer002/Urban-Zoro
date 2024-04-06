@@ -222,10 +222,12 @@ const product = await Cart.find({user_id:req.session.user_id})
 // #############################################################
 
 router.get("/",async(req, res) => {
+
     const sideimg = await Weekly.find({}).limit(1)
     const Joggers = await Products.find({ ptype: 'Joggers' }).limit(6)
     const Sneakers = await Products.find({ ptype: 'Sneakers' }).limit(6)
     const Hoodie = await Products.find({ ptype: 'Hoodie' }).limit(6)
+
     res.render("index",{role:req.session,sideimg:sideimg,Joggers:Joggers,Sneakers:Sneakers,Hoodie:Hoodie})
 
 })
