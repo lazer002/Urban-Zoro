@@ -243,24 +243,30 @@
 <div class="container py-5 my-5">
 
       <div class="row">
+        
+        <% for(i=0; i<Sneakers.length;i++) {%>
         <div class="col-lg-2 col-sm-4  my-2 animation_left">
+          <a href="/product<%= Sneakers[i]._id %>">
           <div class="card border-0 rounded-0 bg-transparent bgshadow">
-            <img src="images/shoes/1.webp" class="card-img-top" alt="..." loading="lazy">
+            <img src="/static/product/<%= Sneakers[i].pfile %>" class="card-img-top" alt="..." loading="lazy">
             <div class="card-body text-light">
-              <h5 class="card-title">Techwear Cargo Pants | URBXN.1 Techwear</h5>
+              <h5 class="card-title"><%= Sneakers[i].pname %> | URBXN.1 Techwear</h5>
               <img src="images/5s.png" alt="" class="py-2">
 
-              <p class="card-text"> <del> Rs. 8,100.00</del> Rs. 4,300.00</p>
-              <span><input type="color" name="" id="" value="#ff0000" class="ctype">
-                <input type="color" name="" id="" value="#01FF0A" class="ctype">
-                <input type="color" name="" id="" value="#DAC7C7" class="ctype">
+              <p class="card-text"> <del> ₹ <%= Sneakers[i].pdiscount %></del>₹ <%= Sneakers[i].pprice %></p>
+              <span>
+                <%  var d = Sneakers[i].pcolr %>
+                                    <% for(j=0; j<d;j++) {%>
+                                    <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                                   <%}%>
 
               </span>
             </div>
           </div>
+        </a>
         </div>
-
-        <div class="col-lg-2 col-sm-4  my-2 animation_left">
+        <%}%>
+        <!-- <div class="col-lg-2 col-sm-4  my-2 animation_left">
           <div class="card border-0 rounded-0 bg-transparent bgshadow">
             <img src="images/shoes/2.jpg" class="card-img-top" alt="..." loading="lazy">
             <div class="card-body text-light">
@@ -341,7 +347,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="col-12 text-center py-5 my-2">
@@ -389,6 +395,37 @@
 <div class="container ">
       <div class="row ">
         <h1 class="py-5  fw-bold text-center animation_in"><span class="border-bottom">Sneak Peak at some of our Joggers</span></h1>
+  
+
+
+
+        <% for(i=0; i<Joggers.length;i++) {%>
+          <div class="col-lg-2 col-sm-4  my-2 animation_left">
+            <a href="/product<%= Joggers[i]._id %>">
+            <div class="card border-0 rounded-0 bg-transparent bgshadow">
+              <img src="/static/product/<%= Joggers[i].pfile %>" class="card-img-top" alt="..." loading="lazy">
+              <div class="card-body text-light">
+                <h5 class="card-title"><%= Joggers[i].pname %> | URBXN.1 Techwear</h5>
+                <img src="images/5s.png" alt="" class="py-2">
+  
+                <p class="card-text"> <del> ₹ <%= Joggers[i].pdiscount %></del>₹ <%= Joggers[i].pprice %></p>
+                <span>
+                  <%  var d = Joggers[i].pcolr %>
+                                      <% for(j=0; j<d;j++) {%>
+                                      <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                                     <%}%>
+  
+                </span>
+              </div>
+            </div>
+          </a>
+          </div>
+          <%}%>
+
+
+
+<!--       
+       
         <div class="col-lg-2 col-sm-4 my-2 animation_out">
           <div class="card border-0 rounded-0 bg-transparent bgshadow">
             <img src="images/pants/1.png" class="card-img-top" alt="..." loading="lazy">
@@ -407,6 +444,7 @@
             </div>
           </div>
         </div>
+  
 
         <div class="col-lg-2 col-sm-4 my-2 animation_out">
           <div class="card border-0 rounded-0 bg-transparent bgshadow">
@@ -490,7 +528,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="col-12 text-center py-5 ">
         <button class="btn btn-outline-light rounded-2 w-25 animation_out bgshadow"><a href="/Joggers" class="text-decoration-none text-light">VIEW MORE</a></button>
@@ -506,7 +544,36 @@
       <h1 class="py-2 fw-bold text-center py-5 animation_out"><span class="border-bottom ">Sneak Peak at some of our Upper</span></h1>
 
       <div class="row">
-        <div class="col-lg-2 col-sm-4 animation_out">
+
+
+        <% for(i=0; i<Hoodie.length;i++) {%>
+          <div class="col-lg-2 col-sm-4  my-2 animation_left">
+            <a href="/product<%= Hoodie[i]._id %>">
+            <div class="card border-0 rounded-0 bg-transparent bgshadow">
+              <img src="/static/product/<%= Hoodie[i].pfile %>" class="card-img-top" alt="..." loading="lazy">
+              <div class="card-body text-light">
+                <h5 class="card-title"><%= Hoodie[i].pname %> | URBXN.1 Techwear</h5>
+                <img src="images/5s.png" alt="" class="py-2">
+  
+                <p class="card-text"> <del> ₹ <%= Hoodie[i].pdiscount %></del>₹ <%= Hoodie[i].pprice %></p>
+                <span>
+                  <%  var d = Hoodie[i].pcolr %>
+                                      <% for(j=0; j<d;j++) {%>
+                                      <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                                     <%}%>
+  
+                </span>
+              </div>
+            </div>
+          </a>
+          </div>
+          <%}%>
+
+
+
+
+
+        <!-- <div class="col-lg-2 col-sm-4 animation_out">
           <div class="card border-0 rounded-0 bg-transparent bgshadow">
             <img src="images/upper/1.png" class="card-img-top" alt="..." loading="lazy">
             <div class="card-body text-light">
@@ -604,7 +671,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
       <div class="col-12 text-center py-5">
