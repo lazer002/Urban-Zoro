@@ -50,10 +50,11 @@ router.use((req, res, next) => {
                 req.session.role = data.user_role
                 req.session.user_id = data._id;
                 console.log(req.session,'login done');
+                res.send(`<script>alert("Welcome '${req.session.user}' "); window.history.back();</script>`);
               res.redirect('/')
             }
         }else{
-            console.log('login fail');
+            res.send('<script>alert("Wrong Username or Password"); window.history.back();</script>');
             res.redirect('/signin')
         }
     } catch (error) {
@@ -77,6 +78,7 @@ let cartupload = multer({ storage: cartstorage })
 
  router.post('/addtocart', cartupload.single('pfile'),gateway,async(req, res) => {
     try {
+        console.log(req.body);
         const { ptype,pfile, pname, psize, pquantity, pprice, pcolor } = req.body
         const cartq = new Cart({
             ptype,
@@ -89,7 +91,8 @@ let cartupload = multer({ storage: cartstorage })
                 user_id:req.session.user_id
         })
         await cartq.save()
-
+        // res.redirect(req.get('referer'));
+        res.send('<script>alert("Cart Added"); window.history.back();</script>');
     }        
     catch (error) {
         console.log(error);
@@ -219,8 +222,11 @@ const product = await Cart.find({user_id:req.session.user_id})
 // #############################################################
 
 router.get("/",async(req, res) => {
-    const sideimg = await Products.find({}).limit(1)
-    res.render("index",{role:req.session,sideimg:sideimg})
+    const sideimg = await Weekly.find({}).limit(1)
+    const Joggers = await Products.find({ ptype: 'Joggers' }).limit(6)
+    const Sneakers = await Products.find({ ptype: 'Sneakers' }).limit(6)
+    const Hoodie = await Products.find({ ptype: 'Hoodie' }).limit(6)
+    res.render("index",{role:req.session,sideimg:sideimg,Joggers:Joggers,Sneakers:Sneakers,Hoodie:Hoodie})
 
 })
 
@@ -299,11 +305,11 @@ router.post("/signup", (req, res) => {
         uname, email, password, phone
     })
     detail.save().then((result) => {
-
+        res.send('<script>alert("Signup successfully"); window.history.back();</script>');
         res.redirect('/signin')
     })
         .catch((err) => {
-            console.log(err)
+            res.send('<script>alert("Error occurred while saving data"); window.history.back();</script>');
         })
 })
 

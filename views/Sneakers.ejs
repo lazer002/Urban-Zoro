@@ -18,14 +18,15 @@
                         <div class="carousel-item <%= i=== 0 ? 'active' :' ' %> alla" data-bs-interval="2000">
                             <div class="col-md-3">
                                 <a href="/product<%= Sneakers[i]._id %>" class="text-decoration-none text-light">
-                                    <div class="card bg-transparent border border-0 bgshadow">
-                                        <div class="card-img">
+                                    <div class="card bg-transparent border border-0 bgshadow pb-3">
+                                        <div class="card-img text-center">
                                             <img src="/static/product/<%= Sneakers[i].pfile %>" class="img-fluid "
-                                                loading="lazy">
+                                                loading="lazy" width="500" height="300">
                                         </div>
                                         <div class="card-body text-light">
                                             <h5><%= Sneakers[i].pname %></h5>
-                                            <img src="images/5s.png" alt="">
+                                    
+                                            <span class="text-light star fs-4"></span>
                                             <P class="fw-bold"> ₹<%= Sneakers[i].pdiscount %> <del class="text-body">₹<%= Sneakers[i].pprice %> </del></p>
                                         </div>
                                     </div>
@@ -144,7 +145,7 @@
                             <img src="/static/product/<%= Sneakers[i].pfile %>" class="card-img-top" alt="..." loading="lazy">
                             <div class="card-body  text-light">
                                 <h4 class="card-title"><%= Sneakers[i].pname %></h4>
-                                <img src="images/5s.png" alt="">
+                               <span class="text-light star fs-4"></span>
                                 <div class="card-text h5 py-2"> <del> Rs. <%= Sneakers[i].pdiscount %>.00</del> Rs. <%= Sneakers[i].pprice %>.00</div>
                                 <div class="">
                                   <%  var d = Sneakers[i].pcolr %>
@@ -179,7 +180,7 @@
                                             </div>
                                             <div class="card-body text-light">
                                                 <h5><%= Sneakers[i].pname %></h5>
-                                                <img src="images/5s.png" alt="">
+                                                <span class="text-light star fs-4"></span>
                                                 <P class="fw-bold"> ₹<%= Sneakers[i].pdiscount %> <del class="text-body">₹<%= Sneakers[i].pprice %> </del></p>
                                             </div>
                                         </div>
