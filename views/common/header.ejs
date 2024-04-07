@@ -43,15 +43,22 @@
           <div class=" logo"> <a class=" " href="/"><img src="/images/logo.gif" alt="" class="py-0"
                 width=""></a></div>
       
-          <div class="pt-4 d-none d-md-block"><a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></div>
 
-          <div class="p-4 ">
+
+          <div class="p-4 d-none d-md-block">
+            <a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a>
             <% if (role.user) { %>           
             <div class="profilepic"><%= role.user  %></div>  
               <% } else { %>
                 <a class=" " href="/signin"><button class="btn btn-outline-light rounded-2 fw-bold animation_out bgshadow">Signup</button> </a>                  
                       <% } %>
           </div>
+          
+          <button class="navbar-toggler border-0 out d-md-none  px-3" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fa fa-solid fa-bars fs-3"></i>         
+           </button>
         </div>
       </div>
 
@@ -65,12 +72,22 @@
         <div class="container px-5">
 
 
-          <button class="navbar-toggler mx-auto border-0 pe-5 out" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <i class="fa fa-solid fa-bars"></i>         
-           </button>
           <div class="collapse  navbar-collapse" id="navbarSupportedContent">
+
+<div class="d-sm-none">
+  <div>
+    <div class="p-4 d-flex justify-content-between border">
+   <div class=""> <a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></div>  
+      <% if (role.user) { %>           
+      <div class="profilepic"><%= role.user  %></div>  
+        <% } else { %>
+          <a class=" " href="/signin"><button class="btn btn-outline-light rounded-2 fw-bold animation_out bgshadow">Signup</button> </a>                  
+                <% } %>
+    </div>
+  </div>
+</div>
+
+
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center ">
 
               <li class="nav-item mx-3 ">

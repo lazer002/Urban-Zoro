@@ -126,20 +126,36 @@
       <div class="py-5 mb-5 display-5 fw-bold text-center animation_in"><span class="border-bottom">Weekly Offer</span>
       </div>
 
-      <div class="row my-4 bgshadow ">
+      <div class="row my-4 bgshadow bg3">
         <div class="col-sm-1 col-2  my-4  animation_left">
           <% for(i=0;i<sideimg.length;i++) {%>
             <% sideimg[i].pfile.slice(0, 4).forEach(filename=> { %>
-              <div class="col-12  mb-4 "><img src="/static/product/<%= filename %>" alt="" class="img-fluid bgshadow"
+              <div class="col-12  mb-1 "><img src="/static/product/<%= filename %>" alt="" class="img-fluid bgshadow rounded-2"
                   loading="lazy"></div>
               <% }) %>
 
         </div>
         <div class="col-sm-5 col-10 my-4 animation_left">
 
-          <div class="col-10 pt-3">
-            <img src="/static/product/<%=sideimg[i].pfile.slice(0, 1) %>" alt="" class="img-fluid  bgshadow"
-              loading="lazy">
+          <div class="col-10">
+            <!-- <img src="/static/product/<%=sideimg[i].pfile.slice(0, 1) %>" alt="" class="img-fluid  bgshadow"
+              loading="lazy"> -->
+
+
+              <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <% var imgg = sideimg[i].pfile.slice(0, 6) %>
+                  <% imgg.forEach((element, index) => { %>
+                    <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
+                      <img src="/static/product/<%= element %>" class="d-block img-fluid fit-contain rounded-2"  alt="...">
+                    </div>
+                  <% }) %>
+                </div>
+              </div>
+
+
+
+
           </div>
         </div>
         <div class="col-sm-6 col-12 my-4 animation_right">
@@ -189,13 +205,13 @@
     <div class="modal fade" id="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdrop"
       aria-hidden="true">
       <div class="modal-dialog  modal-dialog-scrollable modal-lg">
-        <div class="modal-content text-light">
-          <div class="modal-header bg-black">
+        <div class="modal-content  bg-dark text-light">
+          <div class="modal-header">
             <h1 class="modal-title fs-5 " id="staticBackdrop">Quick View</h1>
-            <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close">X</button>
+            <button type="button" class="btn-close text-light" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body bg-black text-light">
-            <div class="container my-5  ">
+          <div class="modal-body  text-light">
+            <div class="container my-5 bg3">
               <div class="row p-5  bgshadow ">
                 <div class="col-lg-1 col-sm-2  pt-2">
                   <form action="addtocart" method="post">
@@ -213,8 +229,16 @@
 
 
                   <div class="col-12 bgshadow">
-                    <img src="/static/product/<%=sideimg[i].pfile.slice(0, 1) %>" alt="" class="img-fluid w-100"
-                      loading="lazy">
+                    <div id="carouselExampleSlidesOnly<%= i %>" class="carousel-fade" data-bs-ride="carousel">
+                      <div class="carousel-inner">
+                        <% var imgg = sideimg[i].pfile.slice(0, 6) %>
+                        <% imgg.forEach((element, index) => { %>
+                          <div class="carousel-item <%= index === 0 ? 'active' : '' %>" data-bs-interval="2000">
+                            <img src="/static/product/<%= element %>" class="d-block img-fluid fit-contain rounded-2"  alt="...">
+                          </div>
+                        <% }) %>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12">
@@ -249,9 +273,9 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-                  <div class="col-12 bgshadow">
-                    <button class="btn btn-outline-light h4 w-100 rounded-2">BUY NOW</button>
-                    <button class="btn btn-outline-light h4 w-100 rounded-2" type="submit">ADD TO CART</button>
+                  <div class="col-12  ">
+                    <button class="btn btn-outline-light h4 w-100 rounded-2 bgshadow">BUY NOW</button>
+                    <button class="btn btn-outline-light h4 w-100 rounded-2 bgshadow" type="submit">ADD TO CART</button>
                   </div>
 
                 </div>
@@ -260,7 +284,7 @@
 
             </div>
           </div>
-          <div class="modal-footer bg-black">
+          <div class="modal-footer  bg-dark">
             <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal"> Close</button>
             <a href="/<%=sideimg[i].ptype %>"  class="text-decoration-none text-light"><button type="button" class="btn btn-outline-light">
               View Full</button></a>
@@ -448,7 +472,7 @@
     </div>
 
     <!-- animation -->
-    <div class="container py-5 bgshadow">
+    <div class="container py-5 bgshadow bg3">
       <div class="row">
         <div class="col-sm-6 col-12 animation_left">
           <div class="col-8 p-5">

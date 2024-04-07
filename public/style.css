@@ -100,10 +100,15 @@ a {
   position: fixed;
   bottom: 2%;
   right: 2%;
+  z-index: 100;
 }
 
 
-
+.bg3 {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.479) 0%, rgba(5, 5, 5, 0.527) 100%),url('/static/images/2.jpg');
+}
 
 
 
@@ -399,15 +404,21 @@ a {
   width: 100%;
   object-fit: cover;
 }
+ img {transition: .5s ease all;}
 
 .card-img {
   overflow: hidden;
   max-width: 500px;
-
   position: relative;
 }
-
+.card{position: relative;
+overflow: hidden;}
 .card-img:hover img {
+  scale: 1.1;
+  filter: contrast(1.3);
+  filter: saturate(1.5);
+}
+.card:hover img {
   scale: 1.1;
   filter: contrast(1.3);
   filter: saturate(1.5);
@@ -453,3 +464,15 @@ a {
   width: 30px;
 
 }
+
+/* .navbar-nav li {
+  box-shadow: inset 0 0 0 0 #ffffff;
+  color: #000000;
+  margin: 0 -.25rem;
+  padding: 0 .25rem;
+  transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+}
+.navbar-nav li:hover {
+  box-shadow: inset 100px 0 0 0 #ffffff;
+  color: rgb(0, 0, 0);
+} */
