@@ -9,26 +9,24 @@ $(document).ready(()=>{
           url: '/cartonpage',
   
           success: function (response) {
+            if(response.product.length>0){
             document.getElementById('cartbody').innerHTML = ' ';
-  
-            for (let i = 0; i < response.product.length; i++) {
-  
-            const fileString = String.fromCharCode(...response.product[i].pfile.data);
-  
+            for (let i = 0; i < response.product.length; i++) {   
+              const fileString = String.fromCharCode(...response.product[i].pfile.data);
               $('#cartbody').append(`
               <div class="py-3 border-bottom border-light position-relative">
-              <div class="row text-center cartim">
-               
-                <img src="/static/product/${fileString}" alt="" class="rounded-4">
-          
-            
+              <img src="/static/product/${fileString}" alt="" class="rounded-4" loading="lazy">
+              <div class="row text-center cartim">    
     <div class="delthover">
-    <i class="fa fa-solid fa-trash text deletcart"></i>
+    <a href="/deletecart${response.product[i]._id}">
+      <i class="fa fa-solid fa-trash text deletcart"></i>
+      </a>
     <div class="">
       ${response.product[i].pname}
      </div> 
      <div class="">
      Rs.  ${response.product[i].pprice}
+    
      </div>
        <div class=" text-center">
          ${response.product[i].pquantity} Qty
@@ -39,10 +37,26 @@ $(document).ready(()=>{
   </div>
               </div> 
             </div>
+            
               `);
-           
+      
             }
+         
+          }else{
+
+            $('#cartbody').append(`
+            <div class="empty rounded-2 p-3  my-5 text-center"> <i class="fa fa-solid fa-cart-plus"></i></div>`)
           }
+        
+        
+        
+        }
+
+     
+
+
+
+
         });
 
       })
@@ -61,7 +75,18 @@ $(document).ready(()=>{
             
             $this.find('.star').append(stars); 
         });
-    });
+        $('.ctype').each(function() {
+          var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Generates random hex color
+          $(this).css('background-color', randomColor);
+      });
+  });
+
+
+
+
+
+
+
 
     // const x= $('#ajit').val()
   

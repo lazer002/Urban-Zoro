@@ -22,8 +22,8 @@
 
       <div class="container-fluid d-flex justify-content-center bg-black m-0 p-0">
 
-        <ul class="nevs d-flex w-100 text-center justify-content-center p-0">
-          <li>
+        <div class="nevs d-flex w-100 text-center justify-content-between p-0">
+          <div>
             <button class="border-0 bg-transparent p-4" type="button" data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"><img src="/images/search.png" alt="cart"
                 width="35"></button>
@@ -39,21 +39,20 @@
                   data-bs-dismiss="collapse" aria-label="Close" placeholder="exp.Hoodie">
               </div>
             </div>
-          </li>
-          <li class="mx-auto logo"> <a class=" " href="/"><img src="/images/logo.gif" alt="" class="py-0"
-                width=""></a></li>
-        </ul>
-        <ul class="ms-auto nevs d-flex pt-3 px-3 carty">
-          <li class=" ms-auto"><a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></li>
+          </div>
+          <div class=" logo"> <a class=" " href="/"><img src="/images/logo.gif" alt="" class="py-0"
+                width=""></a></div>
+      
+          <div class="pt-4 d-none d-md-block"><a class=" me-3 pt-4" href="/cart"><img src="/images/cart.png" alt="cart" width="40"></a></div>
 
-          <li class="ms-auto ">
+          <div class="p-4 ">
             <% if (role.user) { %>           
             <div class="profilepic"><%= role.user  %></div>  
               <% } else { %>
-                <a class=" " href="/signin"><img src="/images/acc.png" alt="cart" width="40"> </a>                  
+                <a class=" " href="/signin"><button class="btn btn-outline-light rounded-2 fw-bold animation_out bgshadow">Signup</button> </a>                  
                       <% } %>
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -62,17 +61,17 @@
 
       <!-- nav -->
 
-      <nav class="navbar navbar-expand-md navbar-dark bg-black bgshadow">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-black bgshadow">
         <div class="container px-5">
 
 
           <button class="navbar-toggler mx-auto border-0 pe-5 out" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="arrow">⟱ </span>
-          </button>
+            <i class="fa fa-solid fa-bars"></i>         
+           </button>
           <div class="collapse  navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mx-auto mb-2 mb-md-0 text-center ">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center ">
 
               <li class="nav-item mx-3 ">
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -121,8 +120,7 @@
   <div class="offcanvas-header border-bottom border-2 ">
     <h5 class="offcanvas-title" id="offcanvasScrollingLabel"><img src="image/cart.png" alt="" class="pb-2"><span
         class="text-light fw-bold h4 px-5">YOUR CART</span></h5>
-    <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"><img
-        src="product/close.png" alt="">X</button>
+    <button type="button" class="btn-close py-0 pb-3 pe-3 lol" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body text-light ">
 
@@ -131,11 +129,13 @@
     </div>
 
   
+    
 
     <div class=" pt-3 border-top border-2 ">
 
 
-      <div class="mt-4 pt-4">
+      <!-- <div class="mt-4 pt-4">
+    
         <table class="table text-light ">
           <tbody>
             <tr>
@@ -166,11 +166,13 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> -->
       <div class="x text-light">
-        <button class="btn btn-outline-light ">Continue Shoping</button>
-        <button class="btn btn-outline-light px-3 ms-2 ">Checkout</button>
+        <button class="btn btn-outline-light "  data-bs-dismiss="offcanvas" aria-label="Close">Continue Shoping</button>
+      <a href="/cart">  <button class="btn btn-outline-light px-3 ms-2 ">Checkout</button></a>
+        <div id="tprice">
 
+        </div>
       </div>
     </div>
   </div>

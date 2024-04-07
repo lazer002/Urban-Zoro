@@ -126,8 +126,8 @@
       <div class="py-5 mb-5 display-5 fw-bold text-center animation_in"><span class="border-bottom">Weekly Offer</span>
       </div>
 
-      <div class="row my-4 bgshadow">
-        <div class="col-sm-1 col-2  my-4 bgshadow animation_left">
+      <div class="row my-4 bgshadow ">
+        <div class="col-sm-1 col-2  my-4  animation_left">
           <% for(i=0;i<sideimg.length;i++) {%>
             <% sideimg[i].pfile.slice(0, 4).forEach(filename=> { %>
               <div class="col-12  mb-4 "><img src="/static/product/<%= filename %>" alt="" class="img-fluid bgshadow"
@@ -137,7 +137,7 @@
         </div>
         <div class="col-sm-5 col-10 my-4 animation_left">
 
-          <div class="col-10">
+          <div class="col-10 pt-3">
             <img src="/static/product/<%=sideimg[i].pfile.slice(0, 1) %>" alt="" class="img-fluid  bgshadow"
               loading="lazy">
           </div>
@@ -294,10 +294,10 @@
 
                   <p class="card-text"> <del> ₹ <%= Sneakers[i].pdiscount %></del>₹ <%= Sneakers[i].pprice %>
                   </p>
-                  <span>
+                  <span class="d-flex">
                     <% var d=Sneakers[i].pcolr %>
                       <% for(j=0; j<d;j++) {%>
-                        <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                            <div class="rounded-circle me-2 ctype"></div>
                         <%}%>
 
         
@@ -377,10 +377,10 @@
 
                   <p class="card-text"> <del> ₹ <%= Joggers[i].pdiscount %></del>₹ <%= Joggers[i].pprice %>
                   </p>
-                  <span>
+                  <span class="d-flex">
                     <% var d=Joggers[i].pcolr %>
                       <% for(j=0; j<d;j++) {%>
-                        <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                            <div class="rounded-circle me-2 ctype"></div>
                         <%}%>
 
                   </span>
@@ -425,10 +425,11 @@
 
                   <p class="card-text"> <del> ₹ <%= Hoodie[i].pdiscount %></del>₹ <%= Hoodie[i].pprice %>
                   </p>
-                  <span>
+                  <span class="d-flex">
                     <% var d=Hoodie[i].pcolr %>
                       <% for(j=0; j<d;j++) {%>
-                        <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                        
+                      <div class="rounded-circle me-2 ctype"></div>
                         <%}%>
 
                   </span>

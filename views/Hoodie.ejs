@@ -145,11 +145,11 @@
                     <div class="card-body  text-light">
                         <h4 class="card-title"><%= Hoodie[i].pname %></h4>
                         <span class="text-light star fs-4"></span>
-                        <div class="card-text h5 py-2"> <del> Rs. <%= Hoodie[i].pdiscount %>.00</del> Rs. <%= Hoodie[i].pprice %>.00</div>
-                        <div class="">
+                        <div class="card-text h5 py-2"> <del> Rs. <%= Hoodie[i].pdiscount %></del> Rs. <%= Hoodie[i].pprice %></div>
+                        <div class="d-flex">
                           <%  var d = Hoodie[i].pcolr %>
                             <% for(j=0; j<d;j++) {%>
-                            <input type="color" name="" id="ctype" value="#ff0000" class="ctype">
+                                <div class="rounded-circle me-2 ctype"></div>
                            <%}%>
                         </div>
                     </div>

@@ -12,11 +12,11 @@
             <div class="country text-center py-3">
               <label for="country" class="my-2 h3">Country To Deliver</label><br>
               <select name="country" id="" class="w-100 p-3 h5 text-dark">
-                <option value="">india</option>
-                <option value="">usa</option>
-                <option value="">china</option>
-                <option value="">russia</option>
-                <option value="">canada</option>
+                <option value="">India</option>
+                <option value="">Usa</option>
+                <option value="">China</option>
+                <option value="">Russia</option>
+                <option value="">Canada</option>
               </select>
             </div>
 
@@ -40,8 +40,10 @@
                   </button>
                 </h2>
                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                  <div class="accordion-body"><input type="text" class="w-75 border-0 p-2 "><button
-                      class="btn btn-outline-light rounded-0 mb-1">Add Email</button></div>
+                  <div class="accordion-body"><input type="text" class="w-75 border-0 p-2 " placeholder="Enter Email">
+                    <!-- <button
+                      class="btn btn-outline-light rounded-0 mb-1  py-2">Add Email</button> -->
+                    </div>
                 </div>
               </div>
               <div class="accordion-item bg-black">
@@ -68,9 +70,9 @@
                   data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body text-light">
 
-                    <input type="radio" name="" id="" class="me-3"><label for="">Fast delivery</label><br>
-                    <input type="radio" name="" id="" class="me-3"><label for="">2 days delievery</label><br>
-                    <input type="radio" name="" id="" class="me-3"><label for="">Free delivery</label>
+                    <input type="radio" name="radio" id="" class="me-3"><label for="">Fast delivery</label><br>
+                    <input type="radio" name="radio" id="" class="me-3"><label for="">2 days delievery</label><br>
+                    <input type="radio" name="radio" id="" class="me-3"><label for="">Free delivery</label>
 
 
                   </div>
@@ -87,17 +89,17 @@
                   data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body py-3 text-light">
                     <form action="">
-                      <input type="radio" name="" id="" class="me-3"><label for="">master card</label><br>
-                      <input type="radio" name="" id="" class="me-3"><label for="">master card</label><br>
-                      <input type="radio" name="" id="" class="me-3"><label for="">master card</label><br>
-                      <input type="radio" name="" id="" class="me-3"><label for="">master card</label>
+                      <input type="radio" name="" id="" class="me-3"><label for="">Master card</label><br>
+                      <input type="radio" name="" id="" class="me-3"><label for="">visa card</label><br>
+                      <input type="radio" name="" id="" class="me-3"><label for="">Debit card</label><br>
+                      <input type="radio" name="" id="" class="me-3"><label for="">Net Banking</label>
                     </form>
                   </div>
                 </div>
               </div>
 
             </div>
-            <button class="btn btn-outline-light w-100 my-5">
+            <button class="btn btn-outline-light w-100 my-5" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
               <h3>PLACE ORDER</h3>
             </button>
 
@@ -109,31 +111,47 @@
           <div class="border rounded-2 p-4">
             <div class="cart-item mt-5 py-3">
               <div>
-                <div class="card mb-3 bg-transparent border-0 text-light">
-                  <div class="row">
-                    <div class="col-md-4">
-                      <img src="images/shoes/2.jpg" class="img-fluid rounded-2" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title fw-bold h3">Ninja Sneakers</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                          additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><strong class="me-5">Quantity: 1 </strong><strong>Size: </strong>44</p>
-                        <span class="card-footer"><strong class="me-5">TOTAL TO PAY</strong><strong>4000
-                            Rs.</strong></span>
+                <%if(product.length >0) {%>
+                <% for(i=0;i<product.length;i++) {%>
+                  <div class="card mb-3 bg-transparent border-0 text-light">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <img src="/static/product/<%= product[i].pfile %>" class="img-fluid rounded-2" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title fw-bold">
+                            <%= product[i].pname %>
+                          </h5>
+                          <p class="card-text">
+                            <%= product[i].pdiscription %>
+                          </p>
+                          <p class="card-text"><strong class="me-5">Quantity: <%= product[i].pquantity %>
+                            </strong><strong>Size: </strong>
+                            <%= product[i].psize %>
+                          </p>
+                          <p class="card-text"><strong class="me-5">Price: <%= product[i].pprice %> </strong></p>
+
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                  <%}%>
+                  <%} else {%>
 
+                    <div class="empty rounded-2 p-3  my-5 text-center"> <i class="fa fa-solid fa-cart-plus"></i></div>
+
+
+                    <%}%>
               </div>
 
 
 
             </div>
 
-
+            <!-- <div class="border rounded-2 p-3"> <span class="card-footer"><strong class="me-5">TOTAL TO
+                  PAY</strong><strong>4000
+                  Rs.</strong></span></div> -->
           </div>
 
 
@@ -148,6 +166,32 @@
       </div>
 
     </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+      <div class="display-1 ">
+
+Learning Payment
+gateway 
+
+      </div>
+      <h3>soon you will see</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-light rounded-2 w-25 animation_out bgshadow" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-outline-light rounded-2 w-25 animation_out bgshadow">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <%- include('./common/footer.ejs') %>
 

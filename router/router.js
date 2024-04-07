@@ -50,11 +50,11 @@ router.use((req, res, next) => {
                 req.session.role = data.user_role
                 req.session.user_id = data._id;
                 console.log(req.session,'login done');
-                res.send(`<script>alert("Welcome '${req.session.user}' "); window.history.back();</script>`);
+                res.send(`<script>alert("Welcome ${req.session.user}"); window.history.back();</script>`);
               res.redirect('/')
             }
         }else{
-            res.send('<script>alert("Wrong Username or Password"); window.history.back();</script>');
+            // res.send('<script>alert("Wrong Username or Password"); window.history.back();</script>');
             res.redirect('/signin')
         }
     } catch (error) {
@@ -91,8 +91,10 @@ let cartupload = multer({ storage: cartstorage })
                 user_id:req.session.user_id
         })
         await cartq.save()
-        // res.redirect(req.get('referer'));
-        res.send('<script>alert("Cart Added"); window.history.back();</script>');
+        setTimeout(() => {
+        res.redirect(req.get('referer'));
+        // res.send('<script>alert("Cart Added"); window.history.back();</script>');
+    }, 1000);
     }        
     catch (error) {
         console.log(error);
@@ -144,19 +146,41 @@ router.get("/pedit/:id", async (req, res) => {
     }
 })
 
-router.post("/pedit/:id", async (req, res) => {
+
+
+// const cartedi = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, "./public/product")
+//     },
+//     filename: (req, file, cb) => {
+//         // cb(null,file.originalname)
+//         cb(null, Date.now() + (file.originalname))
+//     }
+// })
+// cartedit.single('pfile'),
+// let cartedit = multer({ storage: cartedi })
+
+router.post("/pedit/:id",  async (req, res) => {
+    const { ptype, pname,pdiscription,pdiscount, pprice, pcolr, psize } = req.body
     const pupdatedata = {
-        pfile: req.body.pfile,
-        pname: req.body.pname,
-        pdiscription: req.body.pdiscription,
-        pdiscount: req.body.pdiscount,
-        pprice: req.body.pprice
+        ptype,
+        // pfile: req.file.filename,
+       pname,
+       pdiscription,
+       pdiscount,
+          pprice,
+          pcolr,
+        psize   ,
+           user_id:req.session.user_id
     }
+    console.log(pupdatedata,'edit');
     try {
         const pdata = await Products.findByIdAndUpdate(req.params.id, pupdatedata)
-        console.log("data updated")
-        res.render("/dashboard-viewproduct", { pdata: pdata })
-        res.redirect("../dashboard-viewproduct")
+        console.log(pdata)
+        
+        await pdata.save()
+        // res.render("/dashboard-viewproduct", { pdata: pdata })
+        res.redirect("/dashboard-viewproduct")
     } catch (err) {
         console.log(err)
     }
@@ -320,8 +344,10 @@ router.post("/signup", (req, res) => {
 
 
 
-router.get("/cart", gateway,(req, res) => {
-    res.render("cart",{role:req.session})
+router.get("/cart", gateway,async(req, res) => {
+    const product = await Cart.find({user_id:req.session.user_id})
+   console.log(product,'jjj');
+    res.render("cart",{role:req.session,product:product})
 })
 
 
@@ -474,7 +500,18 @@ router.post("/weelky_add", uploadwk.array('pfile', 10), (req, res) => {
 });
 
 
-
+router.get("/deletecart:id", async (req, res) => {
+    try {
+        console.log(req.session);
+        const data = await Cart.findByIdAndRemove({_id:req.params.id, user_id:req.session.user_id})
+        setTimeout(() => {
+         res.redirect(req.get('referer'));
+        }, 1000);
+    }
+    catch (err) {
+        console.log(err)
+    }
+})
 
 
 

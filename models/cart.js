@@ -11,7 +11,7 @@ const Cartsche = new mongo.Schema({
         type: String
     },
     pprice: {
-        type: String
+        type: Number
     },
     pcolor: {
         type: String

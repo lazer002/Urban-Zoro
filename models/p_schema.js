@@ -18,7 +18,7 @@ pdiscount:{
     type:String
 },
 pprice:{
-    type:String
+    type:Number
 },
 pcolr:{
     type:String
