@@ -50,7 +50,7 @@ router.use((req, res, next) => {
                 req.session.role = data.user_role
                 req.session.user_id = data._id;
                 console.log(req.session,'login done');
-                res.send(`<script>alert("Welcome ${req.session.user}"); window.history.back();</script>`);
+                // res.send(`<script>alert("Welcome ${req.session.user}"); window.history.back();</script>`);
               res.redirect('/')
             }
         }else{
@@ -264,7 +264,7 @@ router.get('/product:id', async (req, res) => {
         const sideimg = await Products.find({ ptype: product.ptype }).limit(5)
 
 
-        res.render('productpage', { product: product, sideimg: sideimg })
+        res.render('productpage', {role:req.session, product: product, sideimg: sideimg })
     } catch (err) {
         console.log(err);
     }
@@ -331,7 +331,7 @@ router.post("/signup", (req, res) => {
         uname, email, password, phone
     })
     detail.save().then((result) => {
-        res.send('<script>alert("Signup successfully"); window.history.back();</script>');
+        // res.send('<script>alert("Signup successfully"); window.history.back();</script>');
         res.redirect('/signin')
     })
         .catch((err) => {
