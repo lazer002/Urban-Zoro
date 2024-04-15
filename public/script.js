@@ -9,8 +9,8 @@ $(document).ready(()=>{
           url: '/cartonpage',
   
           success: function (response) {
+            document.getElementById('cartbody').innerHTML = ' ';
             if(response.product.length>0){
-              document.getElementById('cartbody').innerHTML = ' ';
             for (let i = 0; i < response.product.length; i++) {   
               const fileString = String.fromCharCode(...response.product[i].pfile.data);
               $('#cartbody').append(`
@@ -83,6 +83,22 @@ $(document).ready(()=>{
 
 
 
+  logout
+
+
+
+
+  $(document).ready(function(){
+$(document).on('click','#logout',function(){
+    $.ajax({
+          type: 'GET',
+          url: '/logout',
+          data:{"lala":'lalal'},
+          success: function (response) {
+            if(response.msg=='logout'){
+console.log(response.msg);
+window.location.reload()}
+          }})})})
 
 
 

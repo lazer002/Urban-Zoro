@@ -5,7 +5,7 @@ const  router=require('./router/router')
 require("./db/mongo")
 const bodyparser =require("body-parser")
 const cookie = require('cookie-parser')
-const session = require('cookie-session')
+const session = require("express-session")
 app.set("view engine","ejs")
 
 app.use(bodyparser.urlencoded({extended:true}))

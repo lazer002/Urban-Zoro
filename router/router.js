@@ -20,6 +20,22 @@ router.use((req, res, next) => {
  
  });
 
+ 
+ router.get("/logout", async (req, res) => {
+
+    if (req.session) {
+    
+      req.session.destroy(function (err) {
+        if (err) {
+          return next(err);
+        } else {
+        res.json({msg:"logout"})
+        }
+      });
+    }
+  })
+
+
 
 
  const gateway = function (req, res, next) {
