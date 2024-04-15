@@ -10,7 +10,7 @@ $(document).ready(()=>{
   
           success: function (response) {
             if(response.product.length>0){
-            document.getElementById('cartbody').innerHTML = ' ';
+              document.getElementById('cartbody').innerHTML = ' ';
             for (let i = 0; i < response.product.length; i++) {   
               const fileString = String.fromCharCode(...response.product[i].pfile.data);
               $('#cartbody').append(`

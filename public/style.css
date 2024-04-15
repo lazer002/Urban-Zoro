@@ -107,7 +107,7 @@ a {
 .bg3 {
   background-repeat: no-repeat;
   background-size: contain;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.479) 0%, rgba(5, 5, 5, 0.527) 100%),url('/static/images/2.jpg');
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.479) 0%, rgba(5, 5, 5, 0.527) 100%),url('/static/images/2.jpg');`
 }
 
 
