@@ -83,7 +83,7 @@ $(document).ready(()=>{
 
 
 
-  logout
+  
 
 
 
