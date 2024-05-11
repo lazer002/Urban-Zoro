@@ -372,7 +372,7 @@ a {
 }
 
 .bgg-dash {
-  background: rgb(0, 255, 203);
+  background: rgb(0, 0, 0) !important;
   background: radial-gradient(circle, rgba(7, 7, 7, 0.1) 0%, rgba(59, 59, 59, 0.23) 100%), url('/static/images/bg.png');
   background-attachment: fixed;
   z-index: -1;
